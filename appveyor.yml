@@ -1,6 +1,16 @@
 # AppVeyor configuration file
 # https://www.appveyor.com/docs/appveyor-yml
 
+environment:
+  # # Codecov project token <https://docs.codecov.io/docs/quick-start>
+  # # Encrypted for Appveyor <https://ci.appveyor.com/tools/encrypt>
+  # CODECOV_PROJ_TOKEN:
+  #   secure: T4HU+3zXxONb3hR4a+rJbE0MctjwMjlbHrYVBaU4BRXp9OAWygYlNUnDZZkG7vHk
+  # # Coveralls repo token
+  # # Encrypted for Appveyor <https://ci.appveyor.com/tools/encrypt>
+  # COVERALLS_REPO_TOKEN:
+  #   secure: T4HU+3zXxONb3hR4a+rJbE0MctjwMjlbHrYVBaU4BRXp9OAWygYlNUnDZZkG7vHk
+
 image:
 # https://www.appveyor.com/docs/linux-images-software/#net-framework
 - Ubuntu
@@ -13,9 +23,55 @@ image:
 #  - x86
 #  - x64
 
+# Include build number in FileVersion
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  file_version: '$(VersionPrefix).{build}'
+
 # builds solution in project root by default
 # build:
-#   project: NetProject.sln
+#   project: NetCoreProject.sln
+
+# Note: Built-in --collect:"Code Coverage" currently only works on Windows
+# See https://github.com/Microsoft/vstest/issues/981
+#
+# It produces TestResults\$GUID\$USER_$HOSTNAME_$DATE.coverage file which must
+# be converted to XML with `CodeCoverage.exe analyze` then converted/uploaded
+# https://github.com/csMACnz/Coveralls.net-Samples/blob/xunit-dynamiccodecoverage-appveyor/appveyor.yml
+#
+# Therefore, use coverlet.collector
+# Note: coverlet.msbuild and coverlet.console have known issues
+# https://github.com/tonerdo/coverlet/blob/master/Documentation/KnowIssues.md
+before_test:
+- dotnet add NetCoreProject.UnitTests/NetCoreProject.UnitTests.csproj package coverlet.collector
+test_script:
+- dotnet test --settings TestCoverage.runsettings
+after_test:
+- ps: |-
+    [string] $coverageFilePath = Resolve-Path `
+        -Path "NetCoreProject.UnitTests\TestResults\*\*.opencover.xml"
+    Push-AppveyorArtifact $coverageFilePath
+
+    if ($env:CODECOV_PROJ_TOKEN) {
+        choco install codecov
+        .\codecov -f $coverageFilePath -t $env:CODECOV_PROJ_TOKEN
+    }
+
+    if ($env:COVERALLS_REPO_TOKEN) {
+        dotnet tool install -g coveralls.net --tool-path tools
+        .\tools\csmacnz.Coveralls `
+            --opencover `
+            -i $coverageFilePath `
+            --repoToken $env:COVERALLS_REPO_TOKEN `
+            --commitId $env:APPVEYOR_REPO_COMMIT `
+            --commitBranch $env:APPVEYOR_REPO_BRANCH `
+            --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR `
+            --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL `
+            --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE `
+            --jobId $env:APPVEYOR_JOB_ID `
+            --useRelativePaths
+    }
 
 # Build cache
 cache:

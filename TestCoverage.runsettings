@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- dotnet test settings for code coverage -->
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <!--
+        Configure Coverlet to produce opencover for codecov+coveralls
+        https://github.com/tonerdo/coverlet/blob/master/Documentation/VSTestIntegration.md
+      -->
+      <DataCollector friendlyName="XPlat Code Coverage">
+        <Configuration>
+          <Format>opencover</Format>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
