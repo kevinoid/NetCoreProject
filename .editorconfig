@@ -1,0 +1,67 @@
+# Shared editor configuration <https://editorconfig.org>
+
+# This is the top-most EditorConfig file which should apply to files below
+root = true
+
+[*]
+charset = utf-8
+# https://github.com/pharring/EditorGuidelines#editorconfig-support-vs-2017-and-vs-2019-only
+guidelines = 80, 100, 120
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+## Roslyn Analyzer configuration for Visual Studio 16.5 and later
+## https://github.com/dotnet/roslyn/issues/38674
+# Enable all diagnostics at warning level by default
+dotnet_analyzer_diagnostic.severity = warning
+# Broken https://github.com/dotnet/roslyn-analyzers/issues/2133
+dotnet_diagnostic.CA1506.severity = suggestion
+# Broken https://github.com/dotnet/roslyn-analyzers/issues/2180
+dotnet_diagnostic.CA1508.severity = suggestion
+# Multidimensional should use less memory (lack of indirection), rows are
+# contiguous in memory, and squareness is enforced.  Performance can vary.
+# https://stackoverflow.com/q/597720 (See .NET Core answers downthread)
+# Which is preferable depends on tradeoffs of specific use cases.
+dotnet_diagnostic.CA1814.severity = suggestion
+# Broken https://github.com/dotnet/roslyn-analyzers/issues/2949
+# https://github.com/dotnet/roslyn-analyzers/issues/2936
+dotnet_diagnostic.CA2000.severity = suggestion
+# The value of strong names is dubious.  See:
+# https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/strong-name-signing.md
+# https://github.com/angularsen/UnitsNet/issues/135
+dotnet_diagnostic.CA2210.severity = suggestion
+# Too many false-positives
+dotnet_diagnostic.SA1305.severity = suggestion
+# Prefer UTF-8 without BOM
+dotnet_diagnostic.SA1412.severity = silent
+# Purpose of file is usually self-evident (and documented by class doc)
+dotnet_diagnostic.SA1639.severity = silent
+# Documenting property value is usually redundant
+dotnet_diagnostic.SA1609.severity = silent
+# Do want to use this.
+dotnet_diagnostic.SX1101.severity = silent
+# Don't want to use underscore for field names
+dotnet_diagnostic.SX1309.severity = silent
+# Don't want to use underscore for static field names
+dotnet_diagnostic.SX1309S.severity = silent
+
+## Diagnostics which are too noisy during initial development, but useful later
+# FIXME: CA1573/1591 duplicated with <NoWarn> in .csproj for old VS
+# Do not pass literals as localized parameters
+dotnet_diagnostic.CA1303.severity = suggestion
+# Parameter has no matching param tag in the XML comment
+dotnet_diagnostic.CS1573.severity = suggestion
+# Missing XML comment for publicly visible type or member
+dotnet_diagnostic.CS1591.severity = suggestion
+# Elements must be documented
+dotnet_diagnostic.SA1600.severity = suggestion
+# Partial elements must be documented
+dotnet_diagnostic.SA1601.severity = suggestion
+
+[*.{cs,ps1}]
+indent_size = 4
+indent_style = space
+
+[*.{cshtml,css,html,js,json,jsx,scss,ts,tsx,yaml,yml}]
+indent_size = 2
+indent_style = space

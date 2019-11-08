@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "Kevin Locke",
+      "copyrightText": "Copyright {years} {companyName}.  All rights reserved.",
+      "variables": {
+        "years": "2019"
+      }
+    },
+    "orderingRules": {
+      "blankLinesBetweenUsingGroups": "require"
+    }
+  }
+}

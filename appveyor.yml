@@ -1,0 +1,26 @@
+# AppVeyor configuration file
+# https://www.appveyor.com/docs/appveyor-yml
+
+image:
+# https://www.appveyor.com/docs/linux-images-software/#net-framework
+- Ubuntu
+# https://www.appveyor.com/docs/windows-images-software/#net-framework
+- Visual Studio 2019
+
+# If the package has arch-dependent features, uncomment this and add -x64
+# versions to matrix above (and possibly excluding non-x64 on x86 platform).
+# platform:
+#  - x86
+#  - x64
+
+# builds solution in project root by default
+# build:
+#   project: NetProject.sln
+
+# Build cache
+cache:
+- packages -> *.csproj
+
+# If any job fails, fail build immediately to avoid wasting time/resources.
+matrix:
+  fast_finish: true
