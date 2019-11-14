@@ -4,6 +4,11 @@ App*.config
 app*.config
 appsettings*.json
 
+# Ignore Visual Studio Code settings by default
+# launch.json and/or tasks.json can be committed manually if/when it makes sense
+# https://stackoverflow.com/q/32964920
+.vscode/
+
 # Note: Don't exclude *.Designer.cs files
 # They are generated, but at design time rather than build time in VisualStudio
 # so a user must right-click "Run Custom Tool" to re-create them if absent.
