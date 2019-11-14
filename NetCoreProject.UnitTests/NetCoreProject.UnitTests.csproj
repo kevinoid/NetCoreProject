@@ -14,6 +14,12 @@
     <Description>Unit tests for NetCoreProject.</Description>
 
     <IsPackable>false</IsPackable>
+
+    <!--
+      Analyze additional files (for Puma Scan)
+      https://github.com/pumasecurity/puma-scan/wiki/Installation#step-3-enable-additional-file-analysis
+    -->
+    <AdditionalFileItemNames>$(AdditionalFileItemNames);Content</AdditionalFileItemNames>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -65,6 +71,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="morelinq" Version="3.2.0" />
+    <PackageReference Include="Puma.Security.Rules" Version="2.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

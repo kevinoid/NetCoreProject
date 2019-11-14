@@ -26,6 +26,12 @@
     <VersionPrefix>1.0.0</VersionPrefix>
     <VersionSuffix>preview</VersionSuffix>
 
+    <!--
+      Analyze additional files (for Puma Scan)
+      https://github.com/pumasecurity/puma-scan/wiki/Installation#step-3-enable-additional-file-analysis
+    -->
+    <AdditionalFileItemNames>$(AdditionalFileItemNames);Content</AdditionalFileItemNames>
+
     <ApplicationIcon />
     <StartupObject>NetCoreProject.Program</StartupObject>
   </PropertyGroup>
@@ -76,6 +82,10 @@
     <PackageReference Include="Microsoft.NetFramework.Analyzers" Version="2.9.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Puma.Security.Rules" Version="2.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
