@@ -15,6 +15,7 @@
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
     <Rule Id="CS1573" Action="Info" />  <!-- TODO: Enable before release -->
     <Rule Id="CS1591" Action="Info" />  <!-- TODO: Enable before release -->
+    <Rule Id="CS3016" Action="None" />  <!-- Due to xUnit InlineData -->
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Analyzers" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Analyzers">
     <Rule Id="RS1002" Action="Warning" />
