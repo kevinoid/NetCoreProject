@@ -6,10 +6,12 @@
 [![.NET Version](https://img.shields.io/badge/.NET-netstandard2.0-informational.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
 [![Version on NuGet](https://img.shields.io/nuget/v/NetCoreProject.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
 
-A .NET Core project template with [Roslyn
-Analyzers](https://github.com/dotnet/roslyn-analyzers/),
-[xUnit](https://xunit.net/), [Coverlet](https://github.com/tonerdo/coverlet),
-[codecov](https://codecov.io/)/[coveralls](https://coveralls.io/).
+A .NET Core project template with
+[Roslyn Analyzers](https://github.com/dotnet/roslyn-analyzers/),
+[xUnit](https://xunit.net/),
+[AppVeyor](https://www.appveyor.com),
+[Coverlet](https://github.com/tonerdo/coverlet),
+and [codecov](https://codecov.io/)/[coveralls](https://coveralls.io/).
 
 It is the template that I am using for my own C# projects, which represents my
 current preferences.  I am not advocating for these choices nor this template
