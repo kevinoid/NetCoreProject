@@ -1,15 +1,15 @@
 # AppVeyor configuration file
 # https://www.appveyor.com/docs/appveyor-yml
 
-environment:
-  # # Codecov project token <https://docs.codecov.io/docs/quick-start>
-  # # Encrypted for Appveyor <https://ci.appveyor.com/tools/encrypt>
-  # CODECOV_PROJ_TOKEN:
-  #   secure: T4HU+3zXxONb3hR4a+rJbE0MctjwMjlbHrYVBaU4BRXp9OAWygYlNUnDZZkG7vHk
-  # # Coveralls repo token
-  # # Encrypted for Appveyor <https://ci.appveyor.com/tools/encrypt>
-  # COVERALLS_REPO_TOKEN:
-  #   secure: T4HU+3zXxONb3hR4a+rJbE0MctjwMjlbHrYVBaU4BRXp9OAWygYlNUnDZZkG7vHk
+# environment:
+#   # Codecov project token <https://docs.codecov.io/docs/quick-start>
+#   # Encrypted for Appveyor <https://ci.appveyor.com/tools/encrypt>
+#   CODECOV_PROJ_TOKEN:
+#     secure: T4HU+3zXxONb3hR4a+rJbE0MctjwMjlbHrYVBaU4BRXp9OAWygYlNUnDZZkG7vHk
+#   # Coveralls repo token
+#   # Encrypted for Appveyor <https://ci.appveyor.com/tools/encrypt>
+#   COVERALLS_REPO_TOKEN:
+#     secure: T4HU+3zXxONb3hR4a+rJbE0MctjwMjlbHrYVBaU4BRXp9OAWygYlNUnDZZkG7vHk
 
 image:
 # https://www.appveyor.com/docs/linux-images-software/#net-framework
