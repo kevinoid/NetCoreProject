@@ -23,6 +23,10 @@ image:
 #  - x86
 #  - x64
 
+before_build:
+# restore before build to avoid error NETSDK1004 with MSBuild (in VS image)
+- dotnet restore
+
 # Include build number in FileVersion
 dotnet_csproj:
   patch: true
