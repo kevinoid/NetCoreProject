@@ -72,10 +72,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <!--
+    Note: Microsoft.CodeAnalysis.VersionCheckAnalyzer only checks Roslyn version
+    https://github.com/dotnet/roslyn-analyzers/blob/master/src/Microsoft.CodeAnalysis.VersionCheckAnalyzer/Microsoft.CodeAnalysis.VersionCheckAnalyzer.md
+    So not added here.
+    -->
     <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="2.9.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <!-- Add Microsoft.EntityFrameworkCore.Analyzers for EF Core -->
     <PackageReference Include="Microsoft.NetCore.Analyzers" Version="2.9.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
