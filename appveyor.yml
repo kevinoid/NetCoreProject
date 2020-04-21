@@ -33,9 +33,11 @@ dotnet_csproj:
   file: '**\*.csproj'
   file_version: '$(VersionPrefix).{build}'
 
-# builds solution in project root by default
-# build:
-#   project: NetCoreProject.sln
+build:
+  # Enable MSBuild parallel builds
+  parallel: true
+  # specify solution to build (builds solution in project root by default)
+  # project: NetCoreProject.sln
 
 # Note: Built-in --collect:"Code Coverage" currently only works on Windows
 # See https://github.com/Microsoft/vstest/issues/981
