@@ -1,0 +1,3 @@
+#nullable enable
+NetCoreProject.Program
+static NetCoreProject.Program.Main(string![]! args) -> int
