@@ -57,6 +57,12 @@ dotnet_diagnostic.IDE0045.severity = suggestion
 dotnet_diagnostic.IDE0058.severity = suggestion
 # Disable "Using directives must be placed outside of a namespace declaration"
 dotnet_diagnostic.IDE0065.severity = none
+# Disable "Format initializer with single expression on single line"
+# Minimize diff for adding/removing by keeping each value on its own line.
+dotnet_diagnostic.RCS1183.severity = none
+# Ignore "Use regular string literal instead of verbatim string literal"
+# Using verbatim strings consistently (e.g. alignment, regex contexts) is good.
+dotnet_diagnostic.RCS1192.severity = silent
 # Suggest "Field names should not use Hungarian notation"
 # Too many false-positives
 dotnet_diagnostic.SA1305.severity = suggestion
