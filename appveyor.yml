@@ -24,6 +24,8 @@ image:
 #  - x64
 
 before_build:
+# Print .NET information for diagnostic purposes
+- dotnet --info
 # restore before build to avoid error NETSDK1004 with MSBuild (in VS image)
 - dotnet restore
 
