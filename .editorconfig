@@ -10,52 +10,85 @@ guidelines = 80, 100, 120
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-## Roslyn Analyzer configuration for Visual Studio 16.5 and later
-## https://github.com/dotnet/roslyn/issues/38674
+## Configure Roslyn Analyzers
+## https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers#set-rule-severity-in-an-editorconfig-file
+
 # Enable all diagnostics at warning level by default
 dotnet_analyzer_diagnostic.severity = warning
+
+# Note: dotnet_analyzer_diagnostic.severity should not apply to compiler
+# diagnostics (e.g. IDE*) but does in Visual Studio 16.5 due to
+# https://github.com/dotnet/roslyn/issues/42116 so several default levels are
+# configured below to revert the change resulting from this issue.
+#
+# Note: Compiler diagnostics (e.g. IDE*) are not analyzed during build and will
+# not cause build failures until Microsoft.CodeAnalysis.CSharp.CodeStyle is
+# ready.  See https://github.com/dotnet/roslyn/issues/33558
+
+# Suggest "Avoid excessive class coupling"
 # Broken https://github.com/dotnet/roslyn-analyzers/issues/2133
 dotnet_diagnostic.CA1506.severity = suggestion
+# Suggest "Avoid Dead Conditional Code"
 # Broken https://github.com/dotnet/roslyn-analyzers/issues/2180
 dotnet_diagnostic.CA1508.severity = suggestion
+# Suggest "Prefer jagged arrays over multidimensional"
 # Multidimensional should use less memory (lack of indirection), rows are
 # contiguous in memory, and squareness is enforced.  Performance can vary.
 # https://stackoverflow.com/q/597720 (See .NET Core answers downthread)
 # Which is preferable depends on tradeoffs of specific use cases.
 dotnet_diagnostic.CA1814.severity = suggestion
+# Suggest "Dispose objects before losing scope"
 # Broken https://github.com/dotnet/roslyn-analyzers/issues/2949
 # https://github.com/dotnet/roslyn-analyzers/issues/2936
 dotnet_diagnostic.CA2000.severity = suggestion
+# Suggest "Assemblies should have valid strong names"
 # The value of strong names is dubious.  See:
 # https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/strong-name-signing.md
 # https://github.com/angularsen/UnitsNet/issues/135
 dotnet_diagnostic.CA2210.severity = suggestion
+# Ignore "Use explicit type instead of 'var'"
+dotnet_diagnostic.IDE0008.severity = silent
+# Suggest "'if' statement can be simplified"
+dotnet_diagnostic.IDE0045.severity = suggestion
+# Suggest "Expression value is never used"
+# Note: I want to use this, but fluent interfaces (StringBuilder, OptionSet)
+# make it too painful.  Need something more like MustUseReturnValue.
+# https://www.jetbrains.com/help/resharper/Reference__Code_Annotation_Attributes.html#MustUseReturnValueAttribute
+dotnet_diagnostic.IDE0058.severity = suggestion
+# Disable "Using directives must be placed outside of a namespace declaration"
+dotnet_diagnostic.IDE0065.severity = none
+# Suggest "Field names should not use Hungarian notation"
 # Too many false-positives
 dotnet_diagnostic.SA1305.severity = suggestion
+# Disable "Store files as UTF-8 with byte order mark"
 # Prefer UTF-8 without BOM
-dotnet_diagnostic.SA1412.severity = silent
+dotnet_diagnostic.SA1412.severity = none
+# Ignore "File header should have summary"
 # Purpose of file is usually self-evident (and documented by class doc)
 dotnet_diagnostic.SA1639.severity = silent
+# Ignore "Property documentation should have value"
 # Documenting property value is usually redundant
 dotnet_diagnostic.SA1609.severity = silent
-# Do want to use this.
-dotnet_diagnostic.SX1101.severity = silent
+# Disable "Do not prefix local calls with 'this.'"
+dotnet_diagnostic.SX1101.severity = none
+# Disable "Field names should begin with underscore"
 # Don't want to use underscore for field names
-dotnet_diagnostic.SX1309.severity = silent
+dotnet_diagnostic.SX1309.severity = none
+# Disable "Field names should begin with underscore" for static fields
 # Don't want to use underscore for static field names
-dotnet_diagnostic.SX1309S.severity = silent
+dotnet_diagnostic.SX1309S.severity = none
 
 ## Diagnostics which are too noisy during initial development, but useful later
 # FIXME: CA1573/1591 duplicated with <NoWarn> in .csproj for old VS
-# Do not pass literals as localized parameters
+# Suggest "Do not pass literals as localized parameters"
 dotnet_diagnostic.CA1303.severity = suggestion
-# Parameter has no matching param tag in the XML comment
+# Suggest "Parameter has no matching param tag in the XML comment"
 dotnet_diagnostic.CS1573.severity = suggestion
-# Missing XML comment for publicly visible type or member
+# Suggest "Missing XML comment for publicly visible type or member"
 dotnet_diagnostic.CS1591.severity = suggestion
-# Elements must be documented
+# Suggest "Elements must be documented"
 dotnet_diagnostic.SA1600.severity = suggestion
-# Partial elements must be documented
+# Suggest "Partial elements must be documented"
 dotnet_diagnostic.SA1601.severity = suggestion
 
 [*.{cs,ps1}]
