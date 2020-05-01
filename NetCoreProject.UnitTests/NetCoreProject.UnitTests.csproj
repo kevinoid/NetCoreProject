@@ -6,6 +6,10 @@
     <!-- For https://github.com/OmniSharp/omnisharp-vscode/issues/1197 -->
     <GenerateFullPaths>true</GenerateFullPaths>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <!-- Note: Nullable is problematic for netstandard < 2.1 due to lack of
+      nullability annotations.  Consider disabling, polyfilling (a la JSON.NET
+      https://github.com/dotnet/roslyn/issues/37995#issuecomment-531549082),
+      and/or using the Nullable NuGet package. -->
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
 
