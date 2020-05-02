@@ -57,9 +57,19 @@ dotnet_diagnostic.IDE0045.severity = suggestion
 dotnet_diagnostic.IDE0058.severity = suggestion
 # Disable "Using directives must be placed outside of a namespace declaration"
 dotnet_diagnostic.IDE0065.severity = none
+# Suggest "Inline local variable."
+# Often a local variable makes the code more easily readable/understandable.
+dotnet_diagnostic.RCS1124.severity = suggestion
+dotnet_diagnostic.RCS1124FadeOut.severity = silent
+# Disable "Unconstrained type parameter checked for null."
+# Logic which applies to null often does not apply to non-null default.
+dotnet_diagnostic.RCS1165.severity = none
 # Disable "Format initializer with single expression on single line"
 # Minimize diff for adding/removing by keeping each value on its own line.
 dotnet_diagnostic.RCS1183.severity = none
+# Suggest "Join string expressions."
+# Often strings are split for line length or logic-related reasons.
+dotnet_diagnostic.RCS1190.severity = suggestion
 # Ignore "Use regular string literal instead of verbatim string literal"
 # Using verbatim strings consistently (e.g. alignment, regex contexts) is good.
 dotnet_diagnostic.RCS1192.severity = silent
