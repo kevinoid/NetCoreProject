@@ -48,8 +48,16 @@ dotnet_diagnostic.CA2000.severity = suggestion
 dotnet_diagnostic.CA2210.severity = suggestion
 # Ignore "Use explicit type instead of 'var'"
 dotnet_diagnostic.IDE0008.severity = silent
-# Suggest "'if' statement can be simplified"
-dotnet_diagnostic.IDE0045.severity = suggestion
+# Ignore "Use block body for methods"
+dotnet_diagnostic.IDE0022.severity = silent
+# Ignore "'if' statement can be simplified"
+dotnet_diagnostic.IDE0045.severity = silent
+# Ignore "'if' statement can be simplified"
+dotnet_diagnostic.IDE0046.severity = silent
+# Suggest "Convert to tuple"
+dotnet_diagnostic.IDE0050.severity = suggestion
+# Suggest "Populate switch"
+dotnet_diagnostic.IDE0072.severity = suggestion
 # Suggest "Expression value is never used"
 # Note: I want to use this, but fluent interfaces (StringBuilder, OptionSet)
 # make it too painful.  Need something more like MustUseReturnValue.
@@ -61,6 +69,9 @@ dotnet_diagnostic.IDE0065.severity = none
 # Often a local variable makes the code more easily readable/understandable.
 dotnet_diagnostic.RCS1124.severity = suggestion
 dotnet_diagnostic.RCS1124FadeOut.severity = silent
+# Disable "Add 'param' element to documentation comment."
+# Redundant with CS1573
+dotnet_diagnostic.RCS1141.severity = none
 # Disable "Unconstrained type parameter checked for null."
 # Logic which applies to null often does not apply to non-null default.
 dotnet_diagnostic.RCS1165.severity = none
@@ -73,6 +84,20 @@ dotnet_diagnostic.RCS1190.severity = suggestion
 # Ignore "Use regular string literal instead of verbatim string literal"
 # Using verbatim strings consistently (e.g. alignment, regex contexts) is good.
 dotnet_diagnostic.RCS1192.severity = silent
+# Disable "Implement exception constructors."
+# Redundant with CA1032
+dotnet_diagnostic.RCS1194.severity = none
+# Ignore "Avoid nested ?: operators."
+# If the cases are simple and well-formatted, nesting can be preferable
+dotnet_diagnostic.RCS1238.severity = silent
+# Disable "Remove the unused private method '{0}'."
+# Redundant with RCS1213, which doesn't gray+underline the entire method
+dotnet_diagnostic.S1144.severity = none
+# Disable "Extract this nested ternary operation into an independent statement."
+dotnet_diagnostic.S3358.severity = none
+# Disable "Exception types should be \"public\""
+# Redundant with CA1064
+dotnet_diagnostic.S3871.severity = none
 # Suggest "Field names should not use Hungarian notation"
 # Too many false-positives
 dotnet_diagnostic.SA1305.severity = suggestion
