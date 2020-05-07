@@ -73,11 +73,6 @@ dotnet_diagnostic.RCS1190.severity = suggestion
 # Ignore "Use regular string literal instead of verbatim string literal"
 # Using verbatim strings consistently (e.g. alignment, regex contexts) is good.
 dotnet_diagnostic.RCS1192.severity = silent
-# Disable "Symbol '{0}' uses some oblivious reference types."
-# Disable "Symbol '{0}' is missing nullability annotations in the declared API."
-# Until https://github.com/dotnet/roslyn-analyzers/issues/3596 is fixed
-dotnet_diagnostic.RS0036.severity = none
-dotnet_diagnostic.RS0041.severity = none
 # Suggest "Field names should not use Hungarian notation"
 # Too many false-positives
 dotnet_diagnostic.SA1305.severity = suggestion
