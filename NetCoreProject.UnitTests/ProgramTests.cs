@@ -1,5 +1,5 @@
 // <copyright file="ProgramTests.cs" company="Kevin Locke">
-// Copyright 2019 Kevin Locke.  All rights reserved.
+// Copyright 2019-2020 Kevin Locke.  All rights reserved.
 // </copyright>
 
 namespace NetCoreProject.UnitTests
