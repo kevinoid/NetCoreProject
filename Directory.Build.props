@@ -1,0 +1,54 @@
+<!--
+  Properties shared by all projects in all subdirectories.
+  https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
+-->
+<Project>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <!--
+      Use the latest released version of the C# language.
+      https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version
+    -->
+    <LangVersion>latest</LangVersion>
+
+    <!--
+      Enable nullable reference types.
+      https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references
+
+      Note: Nullable reference types are problematic for netstandard < 2.1, due
+      to lack of nullability annotations.  Consider disabling, polyfilling (e.g.
+      https://github.com/dotnet/roslyn/issues/37995#issuecomment-531549082),
+      and/or using the Nullable NuGet package.
+    -->
+    <Nullable>enable</Nullable>
+
+    <!--
+      Include full paths in compiler output for Omnisharp.
+      See https://github.com/OmniSharp/omnisharp-vscode/issues/1197
+    -->
+    <GenerateFullPaths>true</GenerateFullPaths>
+
+    <!--
+      Annotate neutral language for assemblies.
+      https://docs.microsoft.com/en-us/visualstudio/code-quality/ca1824
+    -->
+    <NeutralLanguage>en-US</NeutralLanguage>
+
+    <!-- Shared Metadata -->
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <Company>Kevin Locke</Company>
+    <Copyright>Copyright © 2019 Kevin Locke</Copyright>
+    <!-- PackageLicenseExpression uses SPDX Expression Syntax Version 2.0
+      https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60
+      https://spdx.org/licenses/ -->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <ProjectUrl>https://github.com/kevinoid/NetCoreProject</ProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/kevinoid/NetCoreProject.git</RepositoryUrl>
+
+    <!-- https://andrewlock.net/version-vs-versionsuffix-vs-packageversion-what-do-they-all-mean/ -->
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>preview</VersionSuffix>
+  </PropertyGroup>
+</Project>

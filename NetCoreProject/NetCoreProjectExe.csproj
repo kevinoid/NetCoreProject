@@ -1,34 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Description>.NET Core executable project template.</Description>
+
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-
-    <!-- For https://github.com/OmniSharp/omnisharp-vscode/issues/1197 -->
-    <GenerateFullPaths>true</GenerateFullPaths>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <!-- Note: Nullable is problematic for netstandard < 2.1 due to lack of
-      nullability annotations.  Consider disabling, polyfilling (a la JSON.NET
-      https://github.com/dotnet/roslyn/issues/37995#issuecomment-531549082),
-      and/or using the Nullable NuGet package. -->
-    <Nullable>enable</Nullable>
-    <LangVersion>8.0</LangVersion>
-
-    <AssemblyName>NetCoreProject</AssemblyName>
-    <Company>Kevin Locke</Company>
-    <Copyright>Copyright © 2019 Kevin Locke</Copyright>
-    <Description>.NET Core executable project template.</Description>
-    <!-- PackageLicenseExpression uses SPDX Expression Syntax Version 2.0
-      https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60
-      https://spdx.org/licenses/ -->
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <ProjectUrl>https://github.com/kevinoid/NetCoreProject</ProjectUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/kevinoid/NetCoreProject.git</RepositoryUrl>
-
-    <!-- https://andrewlock.net/version-vs-versionsuffix-vs-packageversion-what-do-they-all-mean/ -->
-    <VersionPrefix>1.0.0</VersionPrefix>
-    <VersionSuffix>preview</VersionSuffix>
 
     <!--
       Analyze additional files (for Puma Scan)
