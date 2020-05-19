@@ -72,9 +72,17 @@ dotnet_diagnostic.RCS1124FadeOut.severity = silent
 # Disable "Add 'param' element to documentation comment."
 # Redundant with CS1573
 dotnet_diagnostic.RCS1141.severity = none
+# Suggest "Unused parameter '{0}'"
+# Warns about lambda expressions, where parameter can't be removed
+# https://github.com/JosefPihrt/Roslynator/issues/400#issuecomment-415805957
+# Changing param name to _ would remove useful information
+dotnet_diagnostic.RCS1163.severity = suggestion
 # Disable "Unconstrained type parameter checked for null."
 # Logic which applies to null often does not apply to non-null default.
 dotnet_diagnostic.RCS1165.severity = none
+# Suggest "Convert comment to documentation comment."
+# Comments above fields are not necessarily suitable for field xmldoc.
+dotnet_diagnostic.RCS1181.severity = suggestion
 # Disable "Format initializer with single expression on single line"
 # Minimize diff for adding/removing by keeping each value on its own line.
 dotnet_diagnostic.RCS1183.severity = none
@@ -87,9 +95,15 @@ dotnet_diagnostic.RCS1192.severity = silent
 # Disable "Implement exception constructors."
 # Redundant with CA1032
 dotnet_diagnostic.RCS1194.severity = none
+# Suggest "Use method chaining."
+# Use whichever seems appropriate for code readability/comprehensibility.
+dotnet_diagnostic.RCS1201.severity = suggestion
 # Ignore "Avoid nested ?: operators."
 # If the cases are simple and well-formatted, nesting can be preferable
 dotnet_diagnostic.RCS1238.severity = silent
+# Disable "'{0}' should not be thrown by user code."
+# Redundant with CA2201
+dotnet_diagnostic.S112.severity = none
 # Disable "Remove the unused private method '{0}'."
 # Redundant with RCS1213, which doesn't gray+underline the entire method
 dotnet_diagnostic.S1144.severity = none
