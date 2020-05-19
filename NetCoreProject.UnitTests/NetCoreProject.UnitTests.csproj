@@ -85,7 +85,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NetCoreProject\NetCoreProjectExe.csproj" />
+    <ProjectReference Include="..\NetCoreProject\NetCoreProject.csproj" />
   </ItemGroup>
 
 </Project>

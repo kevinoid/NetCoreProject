@@ -1,15 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>.NET Core library project template.</Description>
+    <Description>.NET Core project template.</Description>
+
+    <!-- Change to Exe to build an executable -->
+    <OutputType>Library</OutputType>
 
     <!--
       Analyze additional files (for Puma Scan)
       https://github.com/pumasecurity/puma-scan/wiki/Installation#step-3-enable-additional-file-analysis
     -->
     <AdditionalFileItemNames>$(AdditionalFileItemNames);Content</AdditionalFileItemNames>
+  </PropertyGroup>
 
-    <ApplicationIcon />
+  <PropertyGroup Condition="'$(OutputType)'=='Exe'">
+    <!-- Need a "concrete" framework (i.e. not netstandard) for Exe -->
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+
+    <!-- Configure class with Main method entry point -->
+    <StartupObject>NetCoreProject.Program</StartupObject>
+
+    <!-- Uncomment to embed a .ico file as the win32 icon resource -->
+    <!-- <ApplicationIcon>NetCoreProject.ico<ApplicationIcon> -->
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,11 +46,12 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!--
-      For Microsoft.CodeAnalysis.PublicApiAnalyzers.
-      https://github.com/dotnet/roslyn-analyzers/blob/master/src/PublicApiAnalyzers/PublicApiAnalyzers.Help.md
-    -->
+  <!--
+    For libraries, maintain public API in PublicApi.*.txt files to review API
+    changes using Microsoft.CodeAnalysis.PublicApiAnalyzers.
+    https://github.com/dotnet/roslyn-analyzers/blob/master/src/PublicApiAnalyzers/PublicApiAnalyzers.Help.md
+  -->
+  <ItemGroup Condition="'$(OutputType)'=='Library'">
     <AdditionalFiles Include="PublicAPI.Shipped.txt" />
     <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
   </ItemGroup>
@@ -64,7 +77,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.0-beta1.final">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.0-beta1.final" Condition="'$(OutputType)'=='Library'">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
