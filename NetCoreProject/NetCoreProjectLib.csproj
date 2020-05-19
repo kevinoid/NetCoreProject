@@ -87,4 +87,14 @@
     </PackageReference>
   </ItemGroup>
 
+  <!--
+    Make members declared with internal visibility accessible from the
+    UnitTests assembly with a corresponding name.
+    https://stackoverflow.com/a/49978185
+  -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>$(MSBuildProjectName).UnitTests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>
