@@ -60,7 +60,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="morelinq" Version="3.3.2" />
     <!-- TODO: Add Microsoft.EntityFrameworkCore.Analyzers for EF Core proj -->
-    <PackageReference Include="Puma.Security.Rules" Version="2.3.0">
+    <PackageReference Include="Puma.Security.Rules" Version="2.4.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
