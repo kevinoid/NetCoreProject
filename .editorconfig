@@ -151,12 +151,12 @@ dotnet_diagnostic.SA1305.severity = suggestion
 # Disable "Store files as UTF-8 with byte order mark"
 # Prefer UTF-8 without BOM
 dotnet_diagnostic.SA1412.severity = none
-# Ignore "File header should have summary"
-# Purpose of file is usually self-evident (and documented by class doc)
-dotnet_diagnostic.SA1639.severity = silent
 # Ignore "Property documentation should have value"
 # Documenting property value is usually redundant
 dotnet_diagnostic.SA1609.severity = silent
+# Ignore "File header should have summary"
+# Purpose of file is usually self-evident (and documented by class doc)
+dotnet_diagnostic.SA1639.severity = silent
 # Disable "Do not prefix local calls with 'this.'"
 dotnet_diagnostic.SX1101.severity = none
 # Disable "Field names should begin with underscore"
