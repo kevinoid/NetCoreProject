@@ -97,6 +97,9 @@ dotnet_diagnostic.RCS1139.severity = none
 # Disable "Add 'param' element to documentation comment."
 # Redundant with CS1573
 dotnet_diagnostic.RCS1141.severity = none
+# Suggest "Use conditional access"
+# Sometimes conditional access is more readable, sometimes it is not.
+dotnet_diagnostic.RCS1146.severity = suggestion
 # Suggest "Enum should declare explicit values."
 # I'm not convinced this is useful in all cases.  Suggest rather than warn.
 dotnet_diagnostic.RCS1161.severity = suggestion
