@@ -105,6 +105,11 @@ dotnet_diagnostic.RCS1163.severity = suggestion
 # Disable "Unconstrained type parameter checked for null."
 # Logic which applies to null often does not apply to non-null default.
 dotnet_diagnostic.RCS1165.severity = none
+# Disable "Use 'return' instead of assignment"
+# Whether early return is preferable depends on other factors such as whether
+# additional pre-return use/assignment of the variable is likely to be added
+# and how the function reads.  Enforcing a general rule is counter-productive.
+dotnet_diagnostic.RCS1179.severity = none
 # Suggest "Convert comment to documentation comment."
 # Comments above fields are not necessarily suitable for field xmldoc.
 dotnet_diagnostic.RCS1181.severity = suggestion
