@@ -141,6 +141,10 @@ dotnet_diagnostic.S3358.severity = none
 # Disable "Exception types should be \"public\""
 # Redundant with CA1064
 dotnet_diagnostic.S3871.severity = none
+# Disable "Do not call 'GC.SuppressFinalize'."
+# Redundant with CA1816
+# Note: Also reports https://github.com/dotnet/roslyn-analyzers/issues/3675
+dotnet_diagnostic.S3971.severity = none
 # Suggest "Field names should not use Hungarian notation"
 # Too many false-positives
 dotnet_diagnostic.SA1305.severity = suggestion
