@@ -185,6 +185,10 @@ dotnet_diagnostic.CA1303.severity = suggestion
 dotnet_diagnostic.CS1573.severity = suggestion
 # Suggest "Missing XML comment for publicly visible type or member"
 dotnet_diagnostic.CS1591.severity = suggestion
+# Suggest "Add exception to documentation comment."
+# This is quite noisy for ArgumentException/ArgumentNullException already
+# indicated by type/nullability and likely <param>.
+dotnet_diagnostic.RCS1140.severity = suggestion
 # Suggest "Take the required action to fix the issue indicated by this 'FIXME' comment."
 dotnet_diagnostic.S1134.severity = suggestion
 # Suggest "Complete the task associated to this 'TODO' comment."
