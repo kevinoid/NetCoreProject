@@ -193,6 +193,14 @@ dotnet_diagnostic.RCS1140.severity = suggestion
 dotnet_diagnostic.S1134.severity = suggestion
 # Suggest "Complete the task associated to this 'TODO' comment."
 dotnet_diagnostic.S1135.severity = suggestion
+# Suggest "Split this method into two, one handling parameters check and the other handling the asynchronous code."
+# There are differing opinions about whether parameter errors should be thrown
+# or returned in a faulted task.  S4457 advocates throwing.  David Fowler
+# advocates returning a faulted task:
+# https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#prefer-asyncawait-over-directly-returning-task
+# During early development, the work to split async methods is not justified.
+# Prior to release, consider enforcing an approach consistently.
+dotnet_diagnostic.S4457.severity = suggestion
 # Suggest "Elements must be documented"
 dotnet_diagnostic.SA1600.severity = suggestion
 # Suggest "Partial elements must be documented"
