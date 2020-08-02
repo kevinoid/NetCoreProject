@@ -90,6 +90,10 @@ dotnet_diagnostic.IDE0065.severity = none
 # Often a local variable makes the code more easily readable/understandable.
 dotnet_diagnostic.RCS1124.severity = suggestion
 dotnet_diagnostic.RCS1124FadeOut.severity = silent
+# Disable "Add summary element to documentation comment."
+# Redundant with CS1591
+# False-positive for partial classes (<summary> should only be on one)
+dotnet_diagnostic.RCS1139.severity = none
 # Disable "Add 'param' element to documentation comment."
 # Redundant with CS1573
 dotnet_diagnostic.RCS1141.severity = none
