@@ -64,6 +64,9 @@ dotnet_diagnostic.CA2000.severity = suggestion
 # https://github.com/dotnet/corefx/blob/master/Documentation/project-docs/strong-name-signing.md
 # https://github.com/angularsen/UnitsNet/issues/135
 dotnet_diagnostic.CA2210.severity = suggestion
+# Enable heuristic detection from "string format, params object[]" arguments
+# See: https://github.com/dotnet/roslyn-analyzers/pull/3653
+dotnet_code_quality.CA2241.try_determine_additional_string_formatting_methods_automatically = true
 # Ignore "Use explicit type instead of 'var'"
 dotnet_diagnostic.IDE0008.severity = silent
 # Ignore "Use block body for methods"
