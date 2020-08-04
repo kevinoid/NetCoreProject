@@ -86,6 +86,9 @@ dotnet_diagnostic.IDE0072.severity = suggestion
 dotnet_diagnostic.IDE0058.severity = suggestion
 # Disable "Using directives must be placed outside of a namespace declaration"
 dotnet_diagnostic.IDE0065.severity = none
+# Disable "Remove redundant empty line"
+# Redundant with SA1507
+dotnet_diagnostic.RCS1036.severity = none
 # Suggest "Remove 'partial' modifier from type with a single part"
 # This may be done intentionally to allow future extension.
 dotnet_diagnostic.RCS1043.severity = suggestion
