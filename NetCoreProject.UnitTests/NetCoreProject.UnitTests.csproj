@@ -15,19 +15,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <CodeAnalysisRuleSet>MostAnalyzerRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Release\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <!-- Note: Duplicated with .editorconfig to support old VS and VS -->
-    <NoWarn>1573;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <CodeAnalysisRuleSet>MostAnalyzerRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <!-- Note: Duplicated with .editorconfig to support old VS and VS -->
-    <NoWarn>1573;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(CI)' == 'True'">

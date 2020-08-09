@@ -27,17 +27,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <CodeAnalysisRuleSet>MostAnalyzerRules.ruleset</CodeAnalysisRuleSet>
-    <!-- Note: Duplicated with .editorconfig to support old VS and VS -->
-    <NoWarn>1573;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <CodeAnalysisRuleSet>MostAnalyzerRules.ruleset</CodeAnalysisRuleSet>
-    <!-- Note: Duplicated with .editorconfig to support old VS and VS -->
-    <NoWarn>1573;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(CI)' == 'True'">
