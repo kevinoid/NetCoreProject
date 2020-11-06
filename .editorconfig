@@ -100,6 +100,13 @@ dotnet_diagnostic.RCS1069.severity = none
 # I find the more explicit assignment preferable most of the time.
 dotnet_diagnostic.RCS1089.severity = none
 dotnet_diagnostic.RCS1089FadeOut.severity = none
+# Suggest "Mark local variable as const"
+# The cost/benefit of adding "const" to local variables is low.
+# It's noisy and unlikely to result in different (optimized) codegen.
+# Worth enabling if "const" could be used in place of type:
+# https://github.com/dotnet/csharplang/issues/106
+# https://github.com/dotnet/csharplang/issues/188
+dotnet_diagnostic.RCS1118.severity = suggestion
 # Suggest "Inline local variable."
 # Often a local variable makes the code more easily readable/understandable.
 dotnet_diagnostic.RCS1124.severity = suggestion
