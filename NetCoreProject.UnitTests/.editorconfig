@@ -1,5 +1,6 @@
 # Shared editor configuration <https://editorconfig.org> for UnitTests
 
+[*]
 # Don't warn about arrays as attribute arguments.
 # xUnit's InlineDataAttribute triggers this warning, which is unavoidable.
 # The risks of violating this rule for UnitTests is smaller than the gain.
