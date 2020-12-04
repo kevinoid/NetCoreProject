@@ -60,14 +60,18 @@
 
   <ItemGroup>
     <!--
-      Not referencing:
-      Microsoft.CodeQuality.Analyzers (part of FxCopAnalyzers)
-      Microsoft.NetCore.Analyzers (part of FxCopAnalyzers)
-      Microsoft.NetFramework.Analyzers (part of FxCopAnalyzers)
-      Microsoft.CodeAnalysis.VersionCheckAnalyzer (FxCopAnalyzers dep only)
+      Note:  Intentionally not using the following analyzers:
+      Microsoft.CodeQuality.Analyzers (part of NetAnalyzers)
+      Microsoft.NetCore.Analyzers (part of NetAnalyzers)
+      Microsoft.NetFramework.Analyzers (part of NetAnalyzers)
+      Microsoft.CodeAnalysis.VersionCheckAnalyzer (NetAnalyzers dep only)
       Text.Analyzers (https://github.com/dotnet/roslyn-analyzers/issues/2200)
     -->
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
+    <!--
+      Microsoft.CodeAnalysis.NetAnalyzers ships with .NET SDK 5.
+      Reference it conditionally to support building with old SDKs.
+    -->
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.1" Condition="!$([MSBuild]::VersionGreaterThanOrEquals($(NETCoreSdkVersion), '5.0.0'))">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
