@@ -155,6 +155,9 @@ dotnet_diagnostic.RCS1194.severity = none
 # Suggest "Use method chaining."
 # Use whichever seems appropriate for code readability/comprehensibility.
 dotnet_diagnostic.RCS1201.severity = suggestion
+# Disable "Remove unused method declaration."
+# Redundant with IDE0051
+dotnet_diagnostic.RCS1213.severity = none
 # Ignore "Avoid nested ?: operators."
 # If the cases are simple and well-formatted, nesting can be preferable
 dotnet_diagnostic.RCS1238.severity = silent
