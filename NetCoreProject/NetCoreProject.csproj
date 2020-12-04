@@ -34,12 +34,6 @@
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(CI)' == 'True'">
-    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
-    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-  </PropertyGroup>
-
   <!--
     For libraries, maintain public API in PublicApi.*.txt files to review API
     changes using Microsoft.CodeAnalysis.PublicApiAnalyzers.

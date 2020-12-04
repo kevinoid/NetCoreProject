@@ -24,12 +24,6 @@
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(CI)' == 'True'">
-    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
-    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Remove="stylecop.json" />
   </ItemGroup>

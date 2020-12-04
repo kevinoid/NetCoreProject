@@ -58,4 +58,11 @@
     <AnalysisLevel>preview</AnalysisLevel>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
+
+  <!-- Treat warnings as errors in CI to enforce rules by failing the build. -->
+  <PropertyGroup Condition="'$(CI)' == 'True'">
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
 </Project>
