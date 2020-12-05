@@ -68,6 +68,9 @@
       analyzers enabled by default. -->
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Be aware, preview causes InvalidAgument error on VS Build tab.
+      https://developercommunity.visualstudio.com/content/problem/1222861
+      https://github.com/dotnet/project-system/pull/6673 -->
     <AnalysisLevel>preview</AnalysisLevel>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
