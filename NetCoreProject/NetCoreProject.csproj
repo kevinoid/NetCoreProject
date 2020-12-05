@@ -15,7 +15,7 @@
 
   <PropertyGroup Condition="'$(OutputType)'=='Exe'">
     <!-- Need a "concrete" framework (i.e. not netstandard) for Exe -->
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
 
     <!-- Configure class with Main method entry point -->
     <StartupObject>NetCoreProject.Program</StartupObject>
