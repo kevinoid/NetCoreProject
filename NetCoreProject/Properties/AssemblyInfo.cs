@@ -9,7 +9,3 @@
 // Can be overridden on non-compliant types individually.
 // Note: Can't be set in csproj: https://github.com/dotnet/msbuild/issues/2281
 [assembly: System.CLSCompliant(true)]
-
-// Expose internals to UnitTests assembly for testing.
-[assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute(
-    "NetCoreProject.UnitTests")]
