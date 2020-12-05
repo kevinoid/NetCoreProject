@@ -7,6 +7,7 @@
 
 // Mark the types as CLS-compliant by default as a matter of good style.
 // Can be overridden on non-compliant types individually.
+// Note: Can't be set in csproj: https://github.com/dotnet/msbuild/issues/2281
 [assembly: System.CLSCompliant(true)]
 
 // Expose internals to UnitTests assembly for testing.
