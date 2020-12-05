@@ -13,6 +13,19 @@
     <LangVersion>latest</LangVersion>
 
     <!--
+      Enable overflow checking by C# compiler.
+
+      Code which relies on overflow should use unchecked.  I prefer immediate,
+      explicit failure (via throwing OverflowException) to continuing with
+      potentially incorrect behavior on overflow.
+
+      I expect minimal performance impact due to compiler optimizations and
+      amenability to branch prediction.  Performance-critical code can disable
+      as-needed.
+    -->
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+
+    <!--
       Enable nullable reference types.
       https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references
 
