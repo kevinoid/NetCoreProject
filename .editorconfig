@@ -34,6 +34,9 @@ dotnet_style_require_accessibility_modifiers = always:warning
 # Enable all diagnostics at warning level by default
 dotnet_analyzer_diagnostic.severity = warning
 
+# Enable code quality checks for code with any visibility
+dotnet_code_quality.api_surface = all
+
 # Note: dotnet_analyzer_diagnostic.severity should not apply to compiler
 # diagnostics (e.g. IDE*) but does in Visual Studio 16.5 due to
 # https://github.com/dotnet/roslyn/issues/42116 so several default levels are
