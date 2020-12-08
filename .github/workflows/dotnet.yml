@@ -1,0 +1,73 @@
+# GitHub Actions Workflow configuration
+# https://docs.github.com/actions/reference/workflow-syntax-for-github-actions
+# https://github.com/actions/starter-workflows/blob/main/ci/dotnet-core.yml
+
+name: .NET
+
+# Note: on key treated as boolean key by YAML
+# https://github.com/adrienverge/yamllint/issues/158#issuecomment-454313233
+# However, GitHub Actions documentation is consistent in using it unquoted.
+on:   # yamllint disable-line rule:truthy
+- push
+- pull_request
+
+jobs:
+  test-primary:
+    name: Test dotnet 5.0 on ubuntu-latest
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        # FIXME: Would prefer to test with latest SDK, or at least latest minor
+        # version.  Not currently supported:
+        # https://github.com/actions/setup-dotnet/issues/93
+        # Poses problems for versions incompatible with worker image:
+        # https://github.com/actions/setup-dotnet/issues/23#issuecomment-523554330
+        # Note: Must quote value.  5.0 becomes 5, which silently fails.
+        dotnet-version: '5.0'
+    - name: Display .NET version
+      run: dotnet --info
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore
+
+  test-secondary:
+    # Only test secondary platforms if primary test platform passed
+    needs:
+    - test-primary
+    name: Test dotnet ${{ matrix.dotnet }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+        # Uncomment to test on macOS:
+        # - macos-latest
+        - ubuntu-latest
+        - windows-latest
+        dotnet:
+        - '5.0'
+        # Uncomment to test with an earlier SDK version:
+        # - 3.1
+        exclude:
+        # Exclude os/version already run in test-primary
+        - os: ubuntu-latest
+          dotnet: '5.0'
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet }}
+    - name: Display .NET version
+      run: dotnet --info
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore
