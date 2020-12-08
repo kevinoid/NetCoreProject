@@ -4,12 +4,12 @@
   <DataCollectionRunSettings>
     <DataCollectors>
       <!--
-        Configure Coverlet to produce opencover for codecov+coveralls
+        Configure Coverlet to produce lcov for codecov+coveralls
         https://github.com/coverlet-coverage/coverlet/blob/v5.4.0/Documentation/VSTestIntegration.md#coverlet-options-supported-by-vstest-integration
       -->
       <DataCollector friendlyName="XPlat Code Coverage">
         <Configuration>
-          <Format>opencover</Format>
+          <Format>lcov</Format>
         </Configuration>
       </DataCollector>
     </DataCollectors>
