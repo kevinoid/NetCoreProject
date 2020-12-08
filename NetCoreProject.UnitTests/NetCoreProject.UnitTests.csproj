@@ -39,6 +39,10 @@
       Microsoft.CodeAnalysis.VersionCheckAnalyzer (NetAnalyzers dep only)
       Text.Analyzers (https://github.com/dotnet/roslyn-analyzers/issues/2200)
     -->
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <!--
       Microsoft.CodeAnalysis.NetAnalyzers ships with .NET SDK 5.
       Reference it conditionally to support building with old SDKs.
