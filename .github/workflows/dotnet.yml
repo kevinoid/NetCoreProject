@@ -34,7 +34,27 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore
+      run: dotnet test --no-restore --settings TestCoverage.runsettings
+    - name: Get path to lcov file
+      id: get_lcov_path
+      shell: bash
+      run: |-
+        printf '::set-output name=lcov_path::%s\n' \
+          *.UnitTests/TestResults/*/coverage.info
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
+        file: ${{ steps.get_lcov_path.outputs.lcov_path }}
+    - name: Upload coverage to Coveralls
+      # Note: @master is currently the only version
+      # https://github.com/coverallsapp/github-action/issues/11
+      uses: coverallsapp/github-action@master
+      with:
+        flag-name: 'ubuntu-latest_5.0'
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel: true
+        path-to-lcov: ${{ steps.get_lcov_path.outputs.lcov_path }}
 
   test-secondary:
     # Only test secondary platforms if primary test platform passed
@@ -70,4 +90,29 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore
+      run: dotnet test --no-restore --settings TestCoverage.runsettings
+    - name: Get path to lcov file
+      id: get_lcov_path
+      shell: bash
+      run: |-
+        printf '::set-output name=lcov_path::%s\n' \
+          *.UnitTests/TestResults/*/coverage.info
+    # Note: Not uploading to Codecov, due to poor support for matrix builds
+    # https://github.com/codecov/codecov-action/issues/40
+    - name: Upload coverage to Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel: true
+        path-to-lcov: ${{ steps.get_lcov_path.outputs.lcov_path }}
+
+  finish:
+    needs: test-secondary
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
