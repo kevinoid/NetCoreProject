@@ -11,7 +11,15 @@
       https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
       Newtonsoft.Json passes TestFrameworks from checks in build.ps1.  Painful.
     -->
+    <TargetFrameworks Condition="'$(CI)' == 'True'">$(TargetFrameworks);netcoreapp2.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(CI)' == 'True' and $([MSBuild]::IsOSPlatform('Windows'))">$(TargetFrameworks);net461</TargetFrameworks>
+
+    <!--
+      Disable check for EOL Target Framework (NETSDK1138).
+      Libraries may want to test against unsupported frameworks to accommodate
+      users or simplify upgrade paths.  No need to warn or fail build.
+    -->
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
 
     <IsPackable>false</IsPackable>
 
@@ -81,7 +89,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" Condition="'$(TargetFramework)' != 'netcoreapp2.0'">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
