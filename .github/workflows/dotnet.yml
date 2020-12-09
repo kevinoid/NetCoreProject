@@ -13,8 +13,8 @@ on:   # yamllint disable-line rule:truthy
 
 jobs:
   test-primary:
-    name: Test dotnet 5.0 on ubuntu-latest
-    runs-on: ubuntu-latest
+    name: Test dotnet 5.0 on windows-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up .NET
@@ -51,7 +51,7 @@ jobs:
       # https://github.com/coverallsapp/github-action/issues/11
       uses: coverallsapp/github-action@master
       with:
-        flag-name: 'ubuntu-latest_5.0'
+        flag-name: 'windows-latest_5.0'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel: true
         path-to-lcov: ${{ steps.get_lcov_path.outputs.lcov_path }}
@@ -75,7 +75,7 @@ jobs:
         # - 3.1
         exclude:
         # Exclude os/version already run in test-primary
-        - os: ubuntu-latest
+        - os: windows-latest
           dotnet: '5.0'
     steps:
     - uses: actions/checkout@v2
