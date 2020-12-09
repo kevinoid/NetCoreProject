@@ -5,6 +5,13 @@
 
     <!-- Multi-target all frameworks to test, newest first (for VS runner) -->
     <TargetFrameworks>net5.0</TargetFrameworks>
+    <!-- Test older frameworks in CI (to avoid requiring devs to install) -->
+    <!--
+      TODO: Test opportunistically outside of CI?
+      https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
+      Newtonsoft.Json passes TestFrameworks from checks in build.ps1.  Painful.
+    -->
+    <TargetFrameworks Condition="'$(CI)' == 'True' and $([MSBuild]::IsOSPlatform('Windows'))">$(TargetFrameworks);net461</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
 
