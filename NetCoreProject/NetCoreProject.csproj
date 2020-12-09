@@ -3,6 +3,8 @@
   <PropertyGroup>
     <Description>.NET Core project template.</Description>
 
+    <TargetFramework>netstandard2.0</TargetFramework>
+
     <!-- Change to Exe to build an executable -->
     <OutputType>Library</OutputType>
 
