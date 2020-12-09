@@ -4,7 +4,7 @@
 -->
 <Project>
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
 
     <!--
       Use the latest released version of the C# language.
