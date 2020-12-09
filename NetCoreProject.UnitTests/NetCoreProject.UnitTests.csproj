@@ -3,7 +3,8 @@
   <PropertyGroup>
     <Description>Unit tests for NetCoreProject.</Description>
 
-    <TargetFramework>net5.0</TargetFramework>
+    <!-- Multi-target all frameworks to test, newest first (for VS runner) -->
+    <TargetFrameworks>net5.0</TargetFrameworks>
 
     <IsPackable>false</IsPackable>
 
