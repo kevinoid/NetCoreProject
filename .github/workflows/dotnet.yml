@@ -12,58 +12,7 @@ on:   # yamllint disable-line rule:truthy
 - pull_request
 
 jobs:
-  test-primary:
-    name: Test dotnet 5.0 on windows-latest
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        # FIXME: Would prefer to test with latest SDK, or at least latest minor
-        # version.  Not currently supported:
-        # https://github.com/actions/setup-dotnet/issues/93
-        # Poses problems for versions incompatible with worker image:
-        # https://github.com/actions/setup-dotnet/issues/23#issuecomment-523554330
-        # Note: Must quote value.  5.0 becomes 5, which silently fails.
-        dotnet-version: '5.0'
-    - name: Display .NET version
-      run: dotnet --info
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: "dotnet test
-        --configuration Release
-        --no-restore
-        --settings TestCoverage.runsettings
-        "
-    - name: Get path to lcov file
-      id: get_lcov_path
-      shell: bash
-      run: |-
-        printf '::set-output name=lcov_path::%s\n' \
-          *.UnitTests/TestResults/*/coverage.info
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        fail_ci_if_error: true
-        file: ${{ steps.get_lcov_path.outputs.lcov_path }}
-    - name: Upload coverage to Coveralls
-      # Note: @master is currently the only version
-      # https://github.com/coverallsapp/github-action/issues/11
-      uses: coverallsapp/github-action@master
-      with:
-        flag-name: 'windows-latest_5.0'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel: true
-        path-to-lcov: ${{ steps.get_lcov_path.outputs.lcov_path }}
-
-  test-secondary:
-    # Only test secondary platforms if primary test platform passed
-    needs:
-    - test-primary
+  test:
     name: Test dotnet ${{ matrix.dotnet }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -74,13 +23,15 @@ jobs:
         - ubuntu-latest
         - windows-latest
         dotnet:
+        # FIXME: Would prefer to test with latest SDK, or at least latest minor
+        # version.  Not currently supported:
+        # https://github.com/actions/setup-dotnet/issues/93
+        # Poses problems for versions incompatible with worker image:
+        # https://github.com/actions/setup-dotnet/issues/23#issuecomment-523554330
+        # Note: Must quote value.  5.0 becomes 5, which silently fails.
         - '5.0'
         # Uncomment to test with an earlier SDK version:
         # - 3.1
-        exclude:
-        # Exclude os/version already run in test-primary
-        - os: windows-latest
-          dotnet: '5.0'
     steps:
     - uses: actions/checkout@v2
     - name: Set up .NET
@@ -105,8 +56,13 @@ jobs:
       run: |-
         printf '::set-output name=lcov_path::%s\n' \
           *.UnitTests/TestResults/*/coverage.info
-    # Note: Not uploading to Codecov, due to poor support for matrix builds
+    # Note: Codecov has poor support for matrix builds
     # https://github.com/codecov/codecov-action/issues/40
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
+        file: ${{ steps.get_lcov_path.outputs.lcov_path }}
     - name: Upload coverage to Coveralls
       uses: coverallsapp/github-action@master
       with:
@@ -116,7 +72,7 @@ jobs:
         path-to-lcov: ${{ steps.get_lcov_path.outputs.lcov_path }}
 
   finish:
-    needs: test-secondary
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
