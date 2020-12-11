@@ -34,7 +34,11 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --settings TestCoverage.runsettings
+      run: "dotnet test
+        --configuration Release
+        --no-restore
+        --settings TestCoverage.runsettings
+        "
     - name: Get path to lcov file
       id: get_lcov_path
       shell: bash
@@ -90,7 +94,11 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --settings TestCoverage.runsettings
+      run: "dotnet test
+        --configuration Release
+        --no-restore
+        --settings TestCoverage.runsettings
+        "
     - name: Get path to lcov file
       id: get_lcov_path
       shell: bash
