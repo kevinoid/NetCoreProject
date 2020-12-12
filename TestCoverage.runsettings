@@ -14,4 +14,20 @@
       </DataCollector>
     </DataCollectors>
   </DataCollectionRunSettings>
+  <!-- Uncomment to generate .trx files with test results.
+  <LoggerRunSettings>
+    <Loggers>
+      <Logger friendlyName="trx">
+        <Configuration>
+          <!-
+            Note: LogFilePrefix avoids overwriting trx in multi-target csproj:
+            https://github.com/microsoft/vstest/issues/880
+            https://github.com/microsoft/vstest/pull/2140
+          ->
+          <LogFilePrefix>results</LogFilePrefix>
+        </Configuration>
+      </Logger>
+    </Loggers>
+  </LoggerRunSettings>
+  -->
 </RunSettings>
