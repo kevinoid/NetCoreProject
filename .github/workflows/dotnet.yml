@@ -57,26 +57,78 @@ jobs:
         --no-restore
         --settings TestCoverage.runsettings
         "
-    - name: Get path to lcov file
-      id: get_lcov_path
+    # TODO: set-output TFM for each lcov for coveralls tag.  Complicated due
+    # to unavoidable GUID <https://github.com/microsoft/vstest/issues/2378>.
+    # - Could parse console output to match TFM from binary to attachment UUID.
+    #   Can't log to file <https://github.com/Microsoft/vstest/issues/680>
+    #   <https://github.com/microsoft/vstest/issues/2224>
+    # - When trx logger enabled, copy saved in dir with same name, overwritten
+    #   by each TFM since LogFilePrefix configuration doesn't apply to dir.
+    # - Could merge coverage files after VSTest using pwsh:
+    # https://github.com/coverlet-coverage/coverlet/pull/225#issuecomment-573896446
+    # - Different RunSettingsFilePath for each TargetFramework?
+    #   https://github.com/microsoft/vstest/pull/2272
+    # - Could force separate VSTest run for each TFM.
+    # Note: Unlike coverlet.msbuild, VSTest does not set output properties
+    # @(CoverletReport).  AfterTargets="VSTest" only useful for sequencing.
+    - name: Get path to lcov file(s)
+      id: get_lcov_paths
       shell: bash
       run: |-
-        printf '::set-output name=lcov_path::%s\n' \
-          *.UnitTests/TestResults/*/coverage.info
+        i=0
+        lcov_paths=
+        for lcov_path in *.UnitTests/TestResults/*/coverage.info; do
+            if [ -e "$lcov_path" ]; then
+                echo "::set-output name=lcov_path$((i+=1))::$lcov_path"
+                lcov_paths="$lcov_paths,$lcov_path"
+            fi
+        done
+        if [ -n "$lcov_paths" ]; then
+            echo "::set-output name=lcov_paths::${lcov_paths#,}"
+        fi
     # Note: Codecov has poor support for matrix builds
     # https://github.com/codecov/codecov-action/issues/40
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
         fail_ci_if_error: true
-        file: ${{ steps.get_lcov_path.outputs.lcov_path }}
-    - name: Upload coverage to Coveralls
+        files: ${{ steps.get_lcov_paths.outputs.lcov_paths }}
+    # GitHub Workflows do not support looping.
+    # coverallsapp/github-action@master supports one file at a time.
+    # Assume at most 4 coverage files, uploaded one per step.
+    # FIXME: This is painful.  Figure out something better.
+    - name: Upload coverage 1 to Coveralls
       uses: coverallsapp/github-action@master
       with:
-        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}
+        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_1
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel: true
-        path-to-lcov: ${{ steps.get_lcov_path.outputs.lcov_path }}
+        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path1 }}
+      if: ${{ steps.get_lcov_paths.outputs.lcov_path1 }}
+    - name: Upload coverage 2 to Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_2
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel: true
+        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path2 }}
+      if: ${{ steps.get_lcov_paths.outputs.lcov_path2 }}
+    - name: Upload coverage 3 to Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_3
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel: true
+        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path3 }}
+      if: ${{ steps.get_lcov_paths.outputs.lcov_path3 }}
+    - name: Upload coverage 4 to Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_4
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel: true
+        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path4 }}
+      if: ${{ steps.get_lcov_paths.outputs.lcov_path4 }}
 
   finish:
     needs: test
