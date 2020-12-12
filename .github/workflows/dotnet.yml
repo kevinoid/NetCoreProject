@@ -30,14 +30,21 @@ jobs:
         # https://github.com/actions/setup-dotnet/issues/23#issuecomment-523554330
         # Note: Must quote value.  5.0 becomes 5, which silently fails.
         - '5.0'
-        # Uncomment to test with an earlier SDK version:
+        # Uncomment to build using an earlier SDK version:
         # - 3.1
     steps:
     - uses: actions/checkout@v2
-    - name: Set up .NET
+    - name: Set up .NET ${{ matrix.dotnet }}
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ matrix.dotnet }}
+    # Install framework versions to test
+    # TODO: Install TargetFrameworks from .csproj.
+    #       Step to run custom MSBuild target to output $(TargetFrameworks)?
+    - name: Set up .NET Core 2.1
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '2.1'
     - name: Display .NET version
       run: dotnet --info
     - name: Install dependencies
