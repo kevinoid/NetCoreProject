@@ -32,6 +32,18 @@ jobs:
         - '5.0'
         # Uncomment to build using an earlier SDK version:
         # - 3.1
+    env:
+      # Save NuGet packages in workspace for better performance on Windows.
+      # GitHub-hosted runners are Azure Standard_DS2_v2 VMs with workspace
+      # on Azure "temporary drive" which has much higher IOPS than OS drive.
+      # https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series#dsv2-series
+      # https://docs.microsoft.com/nuget/Consume-Packages/managing-the-global-packages-and-cache-folders
+      #
+      # Use .nuget/packages, as suggested by
+      # https://github.com/actions/cache/blob/main/examples.md#c---nuget
+      # and because dotfiles are ignored by MSBuild by default
+      # https://github.com/dotnet/sdk/blob/v5.0.101-servicing.20601.7/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.DefaultItems.targets#L40
+      NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
     - uses: actions/checkout@v2
     - name: Set up .NET ${{ matrix.dotnet }}
