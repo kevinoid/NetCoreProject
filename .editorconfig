@@ -52,6 +52,11 @@ dotnet_diagnostic.CA1506.severity = suggestion
 # Suggest "Avoid Dead Conditional Code"
 # Broken https://github.com/dotnet/roslyn-analyzers/issues/2180
 dotnet_diagnostic.CA1508.severity = suggestion
+# Enable "Identifiers should differ by more than case" for public and internal
+# Having the private backing field for a property differ in case only is
+# common, satisfies capitalization conventions, and retains clarity.
+# To allow this, exclude private API surfaces from CA1708.
+dotnet_code_quality.CA1708.api_surface = public, internal
 # Suggest "Prefer jagged arrays over multidimensional"
 # Multidimensional should use less memory (lack of indirection), rows are
 # contiguous in memory, and squareness is enforced.  Performance can vary.
