@@ -79,10 +79,10 @@ dotnet_code_quality.CA2241.try_determine_additional_string_formatting_methods_au
 dotnet_diagnostic.IDE0008.severity = silent
 # Ignore "Use block body for methods"
 dotnet_diagnostic.IDE0022.severity = silent
-# Ignore "'if' statement can be simplified"
-dotnet_diagnostic.IDE0045.severity = silent
-# Ignore "'if' statement can be simplified"
-dotnet_diagnostic.IDE0046.severity = silent
+# Suggest "'if' statement can be simplified"
+dotnet_diagnostic.IDE0045.severity = suggestion
+# Suggest "'if' statement can be simplified"
+dotnet_diagnostic.IDE0046.severity = suggestion
 # Suggest "Convert to tuple"
 dotnet_diagnostic.IDE0050.severity = suggestion
 # Suggest "Expression value is never used"
