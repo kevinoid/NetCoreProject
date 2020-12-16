@@ -85,8 +85,6 @@ dotnet_diagnostic.IDE0045.severity = silent
 dotnet_diagnostic.IDE0046.severity = silent
 # Suggest "Convert to tuple"
 dotnet_diagnostic.IDE0050.severity = suggestion
-# Suggest "Populate switch"
-dotnet_diagnostic.IDE0072.severity = suggestion
 # Suggest "Expression value is never used"
 # Note: I want to use this, but fluent interfaces (StringBuilder, OptionSet)
 # make it too painful.  Need something more like MustUseReturnValue.
