@@ -10,6 +10,7 @@ guidelines = 80, 100, 120
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[*.cs]
 # Configure language and formatting conventions to match analyzer rules below
 # https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-formatting-conventions
 # https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-language-conventions
