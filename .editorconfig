@@ -245,7 +245,7 @@ dotnet_diagnostic.SA1601.severity = suggestion
 indent_size = 4
 indent_style = space
 
-[*.{cshtml,csproj,html,props,targets,xml}]
+[*.{config,cshtml,csproj,html,props,targets,xml}]
 indent_size = 2
 indent_style = space
 
