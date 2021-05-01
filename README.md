@@ -1,8 +1,8 @@
 .NET Core Project Template
 ==========================
 
-[![Build Status](https://img.shields.io/appveyor/ci/kevinoid/NetCoreProject/master.svg?style=flat&label=build+on+windows)](https://ci.appveyor.com/project/kevinoid/NetCoreProject)
-[![Coverage](https://img.shields.io/codecov/c/github/kevinoid/NetCoreProject.svg?style=flat)](https://codecov.io/github/kevinoid/NetCoreProject?branch=master)
+[![Build Status](https://img.shields.io/appveyor/ci/kevinoid/NetCoreProject/main.svg?style=flat&label=build+on+windows)](https://ci.appveyor.com/project/kevinoid/NetCoreProject)
+[![Coverage](https://img.shields.io/codecov/c/github/kevinoid/NetCoreProject.svg?style=flat)](https://codecov.io/github/kevinoid/NetCoreProject?branch=main)
 [![.NET Version](https://img.shields.io/badge/.NET-netstandard2.0-informational.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
 [![Version on NuGet](https://img.shields.io/nuget/v/NetCoreProject.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
 
