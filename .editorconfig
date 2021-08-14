@@ -43,9 +43,9 @@ dotnet_code_quality.api_surface = all
 # https://github.com/dotnet/roslyn/issues/42116 so several default levels are
 # configured below to revert the change resulting from this issue.
 #
-# Note: Compiler diagnostics (e.g. IDE*) are not analyzed during build and will
-# not cause build failures until Microsoft.CodeAnalysis.CSharp.CodeStyle is
-# ready.  See https://github.com/dotnet/roslyn/issues/33558
+# Note: Compiler diagnostics (e.g. IDE*) are only analyzed during build with
+# VS2019 16.8 Preview4 or later and .NET5 RC2 SDK or later:
+# https://github.com/dotnet/roslyn/issues/33558#issuecomment-690347050
 
 # Suggest "Avoid excessive class coupling"
 # Broken https://github.com/dotnet/roslyn-analyzers/issues/2133
