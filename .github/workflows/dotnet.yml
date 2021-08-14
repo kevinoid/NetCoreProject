@@ -107,7 +107,7 @@ jobs:
     # Note: Codecov has poor support for matrix builds
     # https://github.com/codecov/codecov-action/issues/40
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v2
       with:
         fail_ci_if_error: true
         files: ${{ steps.get_lcov_paths.outputs.lcov_paths }}
