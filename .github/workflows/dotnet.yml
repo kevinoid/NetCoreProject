@@ -113,7 +113,6 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
-        fail_ci_if_error: true
         files: ${{ steps.get_lcov_paths.outputs.lcov_paths }}
     # GitHub Workflows do not support looping.
     # coverallsapp/github-action@master supports one file at a time.
@@ -121,6 +120,11 @@ jobs:
     # FIXME: This is painful.  Figure out something better.
     - name: Upload coverage 1 to Coveralls
       uses: coverallsapp/github-action@master
+      # Ignore intermittent server errors (which are out of our control).
+      # https://github.com/coverallsapp/github-action/issues/9
+      # https://github.com/coverallsapp/github-action/issues/79
+      # https://github.com/coverallsapp/github-action/issues/93
+      continue-on-error: true
       with:
         flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_1
         github-token: ${{ secrets.GITHUB_TOKEN }}
