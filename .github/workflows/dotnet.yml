@@ -37,8 +37,8 @@ jobs:
         # https://github.com/actions/setup-dotnet/issues/93
         # Poses problems for versions incompatible with worker image:
         # https://github.com/actions/setup-dotnet/issues/23#issuecomment-523554330
-        # Note: Must quote value.  5.0 becomes 5, which silently fails.
-        - '5.0'
+        # Note: Must quote value.  6.0 becomes 6, which silently fails.
+        - '6.0'
         # Uncomment to build using an earlier SDK version:
         # - 3.1
     env:
