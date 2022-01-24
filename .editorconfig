@@ -65,6 +65,9 @@ dotnet_code_quality.CA1708.api_surface = public, internal
 # https://stackoverflow.com/q/597720 (See .NET Core answers downthread)
 # Which is preferable depends on tradeoffs of specific use cases.
 dotnet_diagnostic.CA1814.severity = suggestion
+# Disable "Prefer 'X' over 'Y' when span-based overloads are available"
+# TODO: Enable when dropping support for .NET Standard 2.0
+dotnet_diagnostic.CA1846.severity = none
 # Suggest "Dispose objects before losing scope"
 # Broken https://github.com/dotnet/roslyn-analyzers/issues/2949
 # https://github.com/dotnet/roslyn-analyzers/issues/2936
