@@ -99,6 +99,9 @@ dotnet_diagnostic.IDE0078.severity = suggestion
 # false positives on SDK 5.0.400: https://github.com/dotnet/roslyn/issues/55014
 # TODO: Re-enable once a fixed SDK is released.
 dotnet_diagnostic.IDE0130.severity = silent
+# Disable "Add accessibility modifiers."
+# Redundant with IDE0040 and SA1400
+dotnet_diagnostic.RCS1018.severity = none
 # Disable "Remove redundant empty line"
 # Redundant with SA1507
 dotnet_diagnostic.RCS1036.severity = none
