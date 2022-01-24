@@ -179,6 +179,9 @@ dotnet_diagnostic.RCS1213.severity = none
 # Ignore "Avoid nested ?: operators."
 # If the cases are simple and well-formatted, nesting can be preferable
 dotnet_diagnostic.RCS1238.severity = silent
+# Disable "Use implicit/explicit object creation"
+# Redundant with IDE0090
+dotnet_diagnostic.RCS1250.severity = none
 # Disable "'{0}' should not be thrown by user code."
 # Redundant with CA2201
 dotnet_diagnostic.S112.severity = none
