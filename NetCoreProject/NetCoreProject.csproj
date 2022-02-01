@@ -74,7 +74,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <!-- TODO: Add Microsoft.EntityFrameworkCore.Analyzers for EF Core proj -->
-    <PackageReference Include="Puma.Security.Rules" Version="2.4.7">
+    <PackageReference Include="Puma.Security.Rules" Version="2.4.11">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
