@@ -56,14 +56,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up .NET ${{ matrix.dotnet }}
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v2
       with:
         dotnet-version: ${{ matrix.dotnet }}
     # Install framework versions to test
     # TODO: Install TargetFrameworks from .csproj.
     #       Step to run custom MSBuild target to output $(TargetFrameworks)?
     - name: Set up .NET Core 3.1
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v2
       with:
         dotnet-version: '3.1'
     - name: Display .NET version
