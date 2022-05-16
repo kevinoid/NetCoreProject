@@ -54,7 +54,7 @@ jobs:
       # https://github.com/dotnet/sdk/blob/v5.0.101-servicing.20601.7/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.DefaultItems.targets#L40
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up .NET ${{ matrix.dotnet }}
       uses: actions/setup-dotnet@v2
       with:
