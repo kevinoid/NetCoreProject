@@ -12,7 +12,7 @@
       Newtonsoft.Json passes TestFrameworks from checks in build.ps1.  Painful.
     -->
     <TargetFrameworks Condition="'$(CI)' == 'True'">$(TargetFrameworks);netcoreapp3.1</TargetFrameworks>
-    <TargetFrameworks Condition="'$(CI)' == 'True' and $([MSBuild]::IsOSPlatform('Windows'))">$(TargetFrameworks);net461</TargetFrameworks>
+    <TargetFrameworks Condition="'$(CI)' == 'True' and $([MSBuild]::IsOSPlatform('Windows'))">$(TargetFrameworks);net462</TargetFrameworks>
 
     <!--
       Disable check for EOL Target Framework (NETSDK1138).
