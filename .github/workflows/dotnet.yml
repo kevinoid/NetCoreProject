@@ -70,6 +70,16 @@ jobs:
       run: dotnet --info
     - name: Install dependencies
       run: dotnet restore
+    # Manually check for deprecated dependencies until
+    # https://github.com/NuGet/Home/issues/12244 is fixed
+    - name: Check for deprecated dependencies
+      shell: bash
+      run: |
+        deprecated=$(dotnet list package --deprecated)
+        echo "$deprecated"
+        nodep_count=$(grep -c 'no deprecated packages' <<<"$deprecated")
+        # Ensure "no deprecated packages" count matches project count
+        test "$nodep_count" -eq 2
     # Note: Separate `dotnet build` step before `dotnet test` causes coverage
     # collection to fail when there are generated source files (e.g. Nullable):
     # https://github.com/coverlet-coverage/coverlet/issues/766#issuecomment-601062528
