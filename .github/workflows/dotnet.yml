@@ -125,11 +125,11 @@ jobs:
       with:
         files: ${{ steps.get_lcov_paths.outputs.lcov_paths }}
     # GitHub Workflows do not support looping.
-    # coverallsapp/github-action@master supports one file at a time.
+    # coverallsapp/github-action@v1 supports one file at a time.
     # Assume at most 4 coverage files, uploaded one per step.
     # FIXME: This is painful.  Figure out something better.
     - name: Upload coverage 1 to Coveralls
-      uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@v1
       # Ignore intermittent server errors (which are out of our control).
       # https://github.com/coverallsapp/github-action/issues/9
       # https://github.com/coverallsapp/github-action/issues/79
