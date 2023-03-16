@@ -89,7 +89,7 @@ jobs:
         --no-restore
         --settings TestCoverage.runsettings
         "
-    # TODO: set-output TFM for each lcov for coveralls tag.  Complicated due
+    # TODO: output TFM for each lcov for coveralls tag.  Complicated due
     # to unavoidable GUID <https://github.com/microsoft/vstest/issues/2378>.
     # - Could parse console output to match TFM from binary to attachment UUID.
     #   Can't log to file <https://github.com/Microsoft/vstest/issues/680>
@@ -111,12 +111,12 @@ jobs:
         lcov_paths=
         for lcov_path in *.UnitTests/TestResults/*/coverage.info; do
             if [ -e "$lcov_path" ]; then
-                echo "::set-output name=lcov_path$((i+=1))::$lcov_path"
+                echo "lcov_path$((i+=1))=$lcov_path" >>"$GITHUB_OUTPUT"
                 lcov_paths="$lcov_paths,$lcov_path"
             fi
         done
         if [ -n "$lcov_paths" ]; then
-            echo "::set-output name=lcov_paths::${lcov_paths#,}"
+            echo "lcov_paths=${lcov_paths#,}" >>"$GITHUB_OUTPUT"
         fi
     # Note: Codecov has poor support for matrix builds
     # https://github.com/codecov/codecov-action/issues/40
