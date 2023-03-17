@@ -123,7 +123,7 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
-        files: ${{ steps.get_lcov_paths.outputs.lcov_paths }}
+        directory: NetCoreProject.UnitTests/TestResults
     # GitHub Workflows do not support looping.
     # coverallsapp/github-action@v1 supports one file at a time.
     # Assume at most 4 coverage files, uploaded one per step.
