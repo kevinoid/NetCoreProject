@@ -89,6 +89,9 @@ jobs:
         --no-restore
         --settings TestCoverage.runsettings
         "
+    # Rename coverage.info to lcov.info for the coveralls uploader:
+    # https://github.com/coverallsapp/coverage-reporter/issues/36
+    #
     # TODO: output TFM for each lcov for coveralls tag.  Complicated due
     # to unavoidable GUID <https://github.com/microsoft/vstest/issues/2378>.
     # - Could parse console output to match TFM from binary to attachment UUID.
@@ -103,32 +106,21 @@ jobs:
     # - Could force separate VSTest run for each TFM.
     # Note: Unlike coverlet.msbuild, VSTest does not set output properties
     # @(CoverletReport).  AfterTargets="VSTest" only useful for sequencing.
-    - name: Get path to lcov file(s)
-      id: get_lcov_paths
+    - name: Rename coverage file(s)
       shell: bash
       run: |-
-        i=0
-        lcov_paths=
         for lcov_path in *.UnitTests/TestResults/*/coverage.info; do
             if [ -e "$lcov_path" ]; then
-                echo "lcov_path$((i+=1))=$lcov_path" >>"$GITHUB_OUTPUT"
-                lcov_paths="$lcov_paths,$lcov_path"
+                mv -nv "$lcov_path" "${lcov_path%/coverage.info}/lcov.info"
             fi
         done
-        if [ -n "$lcov_paths" ]; then
-            echo "lcov_paths=${lcov_paths#,}" >>"$GITHUB_OUTPUT"
-        fi
     # Note: Codecov has poor support for matrix builds
     # https://github.com/codecov/codecov-action/issues/40
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
         directory: NetCoreProject.UnitTests/TestResults
-    # GitHub Workflows do not support looping.
-    # coverallsapp/github-action@v1 supports one file at a time.
-    # Assume at most 4 coverage files, uploaded one per step.
-    # FIXME: This is painful.  Figure out something better.
-    - name: Upload coverage 1 to Coveralls
+    - name: Upload coverage to Coveralls
       uses: coverallsapp/github-action@v2
       # Ignore intermittent server errors (which are out of our control).
       # https://github.com/coverallsapp/github-action/issues/9
@@ -136,35 +128,9 @@ jobs:
       # https://github.com/coverallsapp/github-action/issues/93
       continue-on-error: true
       with:
-        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_1
+        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel: true
-        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path1 }}
-      if: ${{ steps.get_lcov_paths.outputs.lcov_path1 }}
-    - name: Upload coverage 2 to Coveralls
-      uses: coverallsapp/github-action@v2
-      with:
-        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_2
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel: true
-        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path2 }}
-      if: ${{ steps.get_lcov_paths.outputs.lcov_path2 }}
-    - name: Upload coverage 3 to Coveralls
-      uses: coverallsapp/github-action@v2
-      with:
-        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_3
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel: true
-        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path3 }}
-      if: ${{ steps.get_lcov_paths.outputs.lcov_path3 }}
-    - name: Upload coverage 4 to Coveralls
-      uses: coverallsapp/github-action@v2
-      with:
-        flag-name: ${{ matrix.os }}_${{ matrix.dotnet }}_4
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel: true
-        path-to-lcov: ${{ steps.get_lcov_paths.outputs.lcov_path4 }}
-      if: ${{ steps.get_lcov_paths.outputs.lcov_path4 }}
 
   finish:
     needs: test
