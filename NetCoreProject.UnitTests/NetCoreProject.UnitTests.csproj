@@ -67,7 +67,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
     <!-- TODO: Add Microsoft.EntityFrameworkCore.Analyzers for EF Core proj -->
     <PackageReference Include="Puma.Security.Rules.2022" Version="2.4.23">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
