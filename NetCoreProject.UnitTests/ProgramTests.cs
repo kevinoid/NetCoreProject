@@ -4,8 +4,6 @@
 
 namespace NetCoreProject.UnitTests
 {
-    using System;
-
     using Xunit;
 
     public static class ProgramTests
@@ -13,7 +11,7 @@ namespace NetCoreProject.UnitTests
         [Fact]
         public static void Returns0OnEmpty()
         {
-            Assert.Equal(0, Program.Main(Array.Empty<string>()));
+            Assert.Equal(0, Program.Main([]));
         }
     }
 }
