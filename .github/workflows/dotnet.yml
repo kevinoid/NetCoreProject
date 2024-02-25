@@ -32,13 +32,9 @@ jobs:
         - ubuntu-latest
         - windows-latest
         dotnet:
-        # FIXME: Would prefer to test with latest SDK, or at least latest minor
-        # version.  Not currently supported:
-        # https://github.com/actions/setup-dotnet/issues/93
-        # Poses problems for versions incompatible with worker image:
-        # https://github.com/actions/setup-dotnet/issues/23#issuecomment-523554330
-        # Note: Must quote value.  7.0 becomes 7, which silently fails.
-        - '7.0'
+        # Test using latest released SDK
+        # https://github.com/actions/setup-dotnet/pull/82
+        - '*'
         # Uncomment to build using an earlier SDK version:
         # - 3.1
     env:
