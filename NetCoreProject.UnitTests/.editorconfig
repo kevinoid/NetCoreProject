@@ -1,0 +1,8 @@
+# Shared editor configuration <https://editorconfig.org>
+
+[*.cs]
+
+# Disable CA2007: Consider calling ConfigureAwait on the awaited task
+# Calling .ConfigureAwait(false) is contraindicated for xUnit:
+# https://xunit.net/xunit.analyzers/rules/xUnit1030
+dotnet_diagnostic.CA2007.severity = none
