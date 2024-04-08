@@ -188,6 +188,9 @@ dotnet_diagnostic.RCS1250.severity = none
 # Disable "'{0}' should not be thrown by user code."
 # Redundant with CA2201
 dotnet_diagnostic.S112.severity = none
+# Disable "URIs should not be hardcoded"
+# Too many false-positives (e.g. baseUrl + "/", XPaths, etc)
+dotnet_diagnostic.S1075.severity = suggestion
 # Disable "Remove the unused private method '{0}'."
 # Redundant with RCS1213, which doesn't gray+underline the entire method
 dotnet_diagnostic.S1144.severity = none
