@@ -22,12 +22,6 @@
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
 
     <IsPackable>false</IsPackable>
-
-    <!--
-      Analyze additional files (for Puma Scan)
-      https://github.com/pumasecurity/puma-scan/wiki/Installation#step-3-enable-additional-file-analysis
-    -->
-    <AdditionalFileItemNames>$(AdditionalFileItemNames);Content</AdditionalFileItemNames>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
