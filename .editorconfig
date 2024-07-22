@@ -258,6 +258,9 @@ dotnet_diagnostic.S1135.severity = suggestion
 # During early development, the work to split async methods is not justified.
 # Prior to release, consider enforcing an approach consistently.
 dotnet_diagnostic.S4457.severity = suggestion
+# Disable "Use PascalCase for named placeholders"
+# Redundant with CA1727
+dotnet_diagnostic.S6678.severity = none
 # Suggest "Elements must be documented"
 dotnet_diagnostic.SA1600.severity = suggestion
 # Suggest "Partial elements must be documented"
