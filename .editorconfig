@@ -210,6 +210,9 @@ dotnet_diagnostic.S3871.severity = none
 # Redundant with CA1816
 # Note: Also reports https://github.com/dotnet/roslyn-analyzers/issues/3675
 dotnet_diagnostic.S3971.severity = none
+# Disable "Remove this unused private field"
+# Redundant with IDE0052
+dotnet_diagnostic.S4487.severity = none
 # Disable "Prefix local calls with this"
 # Redundant with IDE0009
 dotnet_diagnostic.SA1101.severity = none
