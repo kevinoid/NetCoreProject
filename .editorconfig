@@ -238,6 +238,8 @@ dotnet_diagnostic.SX1309S.severity = none
 # FIXME: CA1573/1591 duplicated with <NoWarn> in .csproj for old VS
 # Suggest "Do not pass literals as localized parameters"
 dotnet_diagnostic.CA1303.severity = suggestion
+# Suggest "Use the LoggerMessage delegates"
+dotnet_diagnostic.CA1848.severity = suggestion
 # Suggest "Parameter has no matching param tag in the XML comment"
 dotnet_diagnostic.CS1573.severity = suggestion
 # Suggest "Missing XML comment for publicly visible type or member"
