@@ -255,6 +255,9 @@ dotnet_diagnostic.RCS1140.severity = suggestion
 dotnet_diagnostic.S1134.severity = suggestion
 # Suggest "Complete the task associated to this 'TODO' comment."
 dotnet_diagnostic.S1135.severity = suggestion
+# Disable "Fix this implementation of 'IDisposable' to conform to the dispose pattern."
+# Redundant with CA1063
+dotnet_diagnostic.S3881.severity = none
 # Suggest "Split this method into two, one handling parameters check and the other handling the asynchronous code."
 # There are differing opinions about whether parameter errors should be thrown
 # or returned in a faulted task.  S4457 advocates throwing.  David Fowler
