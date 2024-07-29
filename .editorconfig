@@ -275,6 +275,9 @@ dotnet_diagnostic.S4457.severity = suggestion
 # Disable "Use PascalCase for named placeholders"
 # Redundant with CA1727
 dotnet_diagnostic.S6678.severity = none
+# Disable "Field should not begin with an underscore"
+# Redundant with CA1707
+dotnet_diagnostic.SA1309.severity = none
 # Suggest "Elements must be documented"
 dotnet_diagnostic.SA1600.severity = suggestion
 # Suggest "Partial elements must be documented"
