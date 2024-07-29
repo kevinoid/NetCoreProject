@@ -251,6 +251,9 @@ dotnet_diagnostic.CS1591.severity = suggestion
 # This is quite noisy for ArgumentException/ArgumentNullException already
 # indicated by type/nullability and likely <param>.
 dotnet_diagnostic.RCS1140.severity = suggestion
+# Disable "Parameter name 'X' differs from base name 'Y'"
+# Redundant with CA1725
+dotnet_diagnostic.RCS1168.severity = none
 # Disable "Rename parameter 'X' to 'Y' to match the interface declaration."
 # Redundant with CA1725
 dotnet_diagnostic.S927.severity = none
