@@ -173,9 +173,9 @@ dotnet_diagnostic.RCS1192.severity = silent
 # Disable "Implement exception constructors."
 # Redundant with CA1032
 dotnet_diagnostic.RCS1194.severity = none
-# Suggest "Use method chaining."
+# Disable "Use method chaining."
 # Use whichever seems appropriate for code readability/comprehensibility.
-dotnet_diagnostic.RCS1201.severity = suggestion
+dotnet_diagnostic.RCS1201.severity = none
 # Disable "Remove unused method declaration."
 # Redundant with IDE0051
 dotnet_diagnostic.RCS1213.severity = none
