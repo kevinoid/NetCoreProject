@@ -201,6 +201,9 @@ dotnet_diagnostic.S1144.severity = none
 # Suggest "This loop's stop incrementer updates 'i' but the stop condition ..."
 # False positives, such as scoping a retry count variable checked in the loop
 dotnet_diagnostic.S1994.severity = suggestion
+# Disable "Methods and properties that don’t access instance data should be marked as static"
+# Redundant with CA1822
+dotnet_diagnostic.S2325.severity = none
 # Disable "Extract this nested ternary operation into an independent statement."
 dotnet_diagnostic.S3358.severity = none
 # Disable "Exception types should be \"public\""
