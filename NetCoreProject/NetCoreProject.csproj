@@ -68,7 +68,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <!-- TODO: Add Microsoft.EntityFrameworkCore.Analyzers for EF Core proj -->
-    <PackageReference Include="Roslynator.Analyzers" Version="4.12.5">
+    <PackageReference Include="Roslynator.Analyzers" Version="4.12.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
