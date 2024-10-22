@@ -264,6 +264,9 @@ dotnet_diagnostic.S927.severity = none
 dotnet_diagnostic.S1134.severity = suggestion
 # Suggest "Complete the task associated to this 'TODO' comment."
 dotnet_diagnostic.S1135.severity = suggestion
+# Disable "Exceptions should not be thrown from unexpected methods"
+# Redundant with CA1065
+dotnet_diagnostic.S3877.severity = none
 # Disable "Fix this implementation of 'IDisposable' to conform to the dispose pattern."
 # Redundant with CA1063
 dotnet_diagnostic.S3881.severity = none
