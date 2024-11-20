@@ -33,8 +33,11 @@ jobs:
         - windows-latest
         dotnet:
         # Test using latest released SDK
-        # https://github.com/actions/setup-dotnet/pull/82
-        - '*'
+        # Note: Wildcard version resolves to latest LTS, not latest/STS
+        # https://github.com/actions/setup-dotnet/issues/497#issuecomment-2489645065
+        # - '*'
+        # Note: Must quote value to avoid 9.0 becoming 9, which silently fails.
+        - '9.0'
         # Uncomment to build using an earlier SDK version:
         # - 3.1
     env:
