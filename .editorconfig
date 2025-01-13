@@ -153,6 +153,9 @@ dotnet_diagnostic.RCS1163.severity = suggestion
 # Disable "Unconstrained type parameter checked for null."
 # Logic which applies to null often does not apply to non-null default.
 dotnet_diagnostic.RCS1165.severity = none
+# Disable "Parameter name 'X' differs from base name 'Y'"
+# Redundant with CA1725
+dotnet_diagnostic.RCS1168.severity = none
 # Disable "Use 'return' instead of assignment"
 # Whether early return is preferable depends on other factors such as whether
 # additional pre-return use/assignment of the variable is likely to be added
@@ -188,6 +191,9 @@ dotnet_diagnostic.RCS1250.severity = none
 # Disable "'{0}' should not be thrown by user code."
 # Redundant with CA2201
 dotnet_diagnostic.S112.severity = none
+# Disable "Rename parameter 'X' to 'Y' to match the interface declaration."
+# Redundant with CA1725
+dotnet_diagnostic.S927.severity = none
 # Disable "URIs should not be hardcoded"
 # Too many false-positives (e.g. baseUrl + "/", XPaths, etc)
 dotnet_diagnostic.S1075.severity = suggestion
@@ -204,11 +210,20 @@ dotnet_diagnostic.S1994.severity = suggestion
 # Disable "Methods and properties that don’t access instance data should be marked as static"
 # Redundant with CA1822
 dotnet_diagnostic.S2325.severity = none
+# Suggest "Remove this argument from the method call; it hides the caller information."
+# Warns about message passed to Debug.Assert(), which is often desirable.
+dotnet_diagnostic.S3236.severity = suggestion
 # Disable "Extract this nested ternary operation into an independent statement."
 dotnet_diagnostic.S3358.severity = none
 # Disable "Exception types should be \"public\""
 # Redundant with CA1064
 dotnet_diagnostic.S3871.severity = none
+# Disable "Exceptions should not be thrown from unexpected methods"
+# Redundant with CA1065
+dotnet_diagnostic.S3877.severity = none
+# Disable "Fix this implementation of 'IDisposable' to conform to the dispose pattern."
+# Redundant with CA1063
+dotnet_diagnostic.S3881.severity = none
 # Disable "Do not call 'GC.SuppressFinalize'."
 # Redundant with CA1816
 # Note: Also reports https://github.com/dotnet/roslyn-analyzers/issues/3675
@@ -216,12 +231,18 @@ dotnet_diagnostic.S3971.severity = none
 # Disable "Remove this unused private field"
 # Redundant with IDE0052
 dotnet_diagnostic.S4487.severity = none
+# Disable "Use PascalCase for named placeholders"
+# Redundant with CA1727
+dotnet_diagnostic.S6678.severity = none
 # Disable "Prefix local calls with this"
 # Redundant with IDE0009
 dotnet_diagnostic.SA1101.severity = none
 # Suggest "Field names should not use Hungarian notation"
 # Too many false-positives
 dotnet_diagnostic.SA1305.severity = suggestion
+# Disable "Field should not begin with an underscore"
+# Redundant with CA1707
+dotnet_diagnostic.SA1309.severity = none
 # Disable "Store files as UTF-8 with byte order mark"
 # Prefer UTF-8 without BOM
 dotnet_diagnostic.SA1412.severity = none
@@ -254,25 +275,10 @@ dotnet_diagnostic.CS1591.severity = suggestion
 # This is quite noisy for ArgumentException/ArgumentNullException already
 # indicated by type/nullability and likely <param>.
 dotnet_diagnostic.RCS1140.severity = suggestion
-# Disable "Parameter name 'X' differs from base name 'Y'"
-# Redundant with CA1725
-dotnet_diagnostic.RCS1168.severity = none
-# Disable "Rename parameter 'X' to 'Y' to match the interface declaration."
-# Redundant with CA1725
-dotnet_diagnostic.S927.severity = none
 # Suggest "Take the required action to fix the issue indicated by this 'FIXME' comment."
 dotnet_diagnostic.S1134.severity = suggestion
 # Suggest "Complete the task associated to this 'TODO' comment."
 dotnet_diagnostic.S1135.severity = suggestion
-# Suggest "Remove this argument from the method call; it hides the caller information."
-# Warns about message passed to Debug.Assert(), which is often desirable.
-dotnet_diagnostic.S3236.severity = suggestion
-# Disable "Exceptions should not be thrown from unexpected methods"
-# Redundant with CA1065
-dotnet_diagnostic.S3877.severity = none
-# Disable "Fix this implementation of 'IDisposable' to conform to the dispose pattern."
-# Redundant with CA1063
-dotnet_diagnostic.S3881.severity = none
 # Suggest "Split this method into two, one handling parameters check and the other handling the asynchronous code."
 # There are differing opinions about whether parameter errors should be thrown
 # or returned in a faulted task.  S4457 advocates throwing.  David Fowler
@@ -281,12 +287,6 @@ dotnet_diagnostic.S3881.severity = none
 # During early development, the work to split async methods is not justified.
 # Prior to release, consider enforcing an approach consistently.
 dotnet_diagnostic.S4457.severity = suggestion
-# Disable "Use PascalCase for named placeholders"
-# Redundant with CA1727
-dotnet_diagnostic.S6678.severity = none
-# Disable "Field should not begin with an underscore"
-# Redundant with CA1707
-dotnet_diagnostic.SA1309.severity = none
 # Suggest "Elements must be documented"
 dotnet_diagnostic.SA1600.severity = suggestion
 # Suggest "Partial elements must be documented"
