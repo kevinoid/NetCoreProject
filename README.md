@@ -1,7 +1,7 @@
 .NET Core Project Template
 ==========================
 
-[![Build Status](https://img.shields.io/appveyor/ci/kevinoid/NetCoreProject/main.svg?style=flat&label=build+on+windows)](https://ci.appveyor.com/project/kevinoid/NetCoreProject)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/kevinoid/NetCoreProject/dotnet.yml?branch=main&style=flat&label=build)](https://github.com/kevinoid/NetCoreProject/actions?query=branch%3Amain)
 [![Coverage](https://img.shields.io/codecov/c/github/kevinoid/NetCoreProject.svg?style=flat)](https://codecov.io/github/kevinoid/NetCoreProject?branch=main)
 [![.NET Version](https://img.shields.io/badge/.NET-netstandard2.0-informational.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
 [![Version on NuGet](https://img.shields.io/nuget/v/NetCoreProject.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
@@ -9,7 +9,7 @@
 A .NET Core project template with
 [Roslyn Analyzers](https://github.com/dotnet/roslyn-analyzers/),
 [xUnit](https://xunit.net/),
-[AppVeyor](https://www.appveyor.com),
+[GitHub Actions CI](https://docs.github.com/en/actions),
 [Coverlet](https://github.com/tonerdo/coverlet),
 and [codecov](https://codecov.io/)/[coveralls](https://coveralls.io/).
 
