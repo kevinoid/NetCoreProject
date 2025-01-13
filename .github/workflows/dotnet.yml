@@ -41,6 +41,12 @@ jobs:
         # Uncomment to build using an earlier SDK version:
         # - 3.1
     env:
+      # Run in globalization-invariant mode on Ubuntu, which lacks ICU:
+      # https://github.com/actions/runner-images/issues/10989#issuecomment-2490725089
+      # https://learn.microsoft.com/en-us/dotnet/core/runtime-config/globalization
+      # Remove this variable to install ICU (for projects which require it).
+      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT:
+        ${{ startsWith(matrix.os, 'ubuntu-') }}
       # Save NuGet packages in workspace for better performance on Windows.
       # GitHub-hosted runners are Azure Standard_DS2_v2 VMs with workspace
       # on Azure "temporary drive" which has much higher IOPS than OS drive.
@@ -53,6 +59,11 @@ jobs:
       # https://github.com/dotnet/sdk/blob/v5.0.101-servicing.20601.7/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.DefaultItems.targets#L40
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
+    # Install ICU on Ubuntu, unless running in globalization-invariant mode
+    - name: Install ICU packages
+      run: sudo apt-get -U install -y libicu-dev
+      if: startsWith(matrix.os, 'ubuntu-')
+        && env.DOTNET_SYSTEM_GLOBALIZATION_INVARIANT != '1'
     - uses: actions/checkout@v4
     - name: Set up .NET ${{ matrix.dotnet }}
       uses: actions/setup-dotnet@v4
