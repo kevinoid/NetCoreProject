@@ -264,6 +264,9 @@ dotnet_diagnostic.S927.severity = none
 dotnet_diagnostic.S1134.severity = suggestion
 # Suggest "Complete the task associated to this 'TODO' comment."
 dotnet_diagnostic.S1135.severity = suggestion
+# Suggest "Remove this argument from the method call; it hides the caller information."
+# Warns about message passed to Debug.Assert(), which is often desirable.
+dotnet_diagnostic.S3236.severity = suggestion
 # Disable "Exceptions should not be thrown from unexpected methods"
 # Redundant with CA1065
 dotnet_diagnostic.S3877.severity = none
