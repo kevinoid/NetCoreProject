@@ -110,6 +110,9 @@ dotnet_diagnostic.RCS1036.severity = none
 # Suggest "Remove 'partial' modifier from type with a single part"
 # This may be done intentionally to allow future extension.
 dotnet_diagnostic.RCS1043.severity = suggestion
+# Disable "Remove original exception from throw statement"
+# Redundant with CA2200
+dotnet_code_quality.RCS1044.severity = none
 # Disable "Remove unnecessary case label"
 # Conflicts with IDE0010 "Populate switch"
 # I'd prefer to be more explicit about cases.
@@ -215,6 +218,9 @@ dotnet_diagnostic.S2325.severity = none
 dotnet_diagnostic.S3236.severity = suggestion
 # Disable "Extract this nested ternary operation into an independent statement."
 dotnet_diagnostic.S3358.severity = none
+# Disable "Consider using 'throw;' to preserve the stack trace."
+# Redundant with CA2200
+dotnet_code_quality.S3445.severity = none
 # Disable "Exception types should be \"public\""
 # Redundant with CA1064
 dotnet_diagnostic.S3871.severity = none
