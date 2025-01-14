@@ -83,6 +83,15 @@ dotnet_diagnostic.CA2210.severity = suggestion
 # Enable heuristic detection from "string format, params object[]" arguments
 # See: https://github.com/dotnet/roslyn-analyzers/pull/3653
 dotnet_code_quality.CA2241.try_determine_additional_string_formatting_methods_automatically = true
+# Disable "Awaiting the result of a null-conditional expression [...]"
+# Redundant with CS8602
+dotnet_code_quality.EPC16.severity = none
+# Disable "Incorrect exception propagation"
+# Redundant with CA2200
+dotnet_code_quality.ERP021.severity = none
+# Suggest "swallows an unobserved exception"
+# This is safe when the cause of a particular exception type is known
+dotnet_code_quality.ERP022.severity = suggestion
 # Ignore "Use explicit type instead of 'var'"
 dotnet_diagnostic.IDE0008.severity = silent
 # Ignore "Use block body for methods"

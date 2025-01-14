@@ -55,6 +55,14 @@
       Microsoft.CodeAnalysis.VersionCheckAnalyzer (NetAnalyzers dep only)
       Text.Analyzers (https://github.com/dotnet/roslyn-analyzers/issues/2200)
     -->
+    <PackageReference Include="ErrorProne.NET.CoreAnalyzers" Version="0.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="ErrorProne.NET.Structs" Version="0.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <!--
       Microsoft.CodeAnalysis.NetAnalyzers ships with .NET SDK 5.
       Reference it conditionally to support building with old SDKs.
