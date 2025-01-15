@@ -14,3 +14,7 @@ dotnet_diagnostic.CA1861.severity = suggestion
 # Calling .ConfigureAwait(false) is contraindicated for xUnit:
 # https://xunit.net/xunit.analyzers/rules/xUnit1030
 dotnet_diagnostic.CA2007.severity = none
+# Ignore "Arrays as attribute arguments is not CLS-compliant"
+# xUnit's InlineDataAttribute triggers this warning, which is unavoidable.
+# The risks of violating this rule for UnitTests is smaller than the gain.
+dotnet_diagnostic.CS3016.severity = silent
