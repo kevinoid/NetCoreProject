@@ -197,6 +197,10 @@ dotnet_diagnostic.RCS1213.severity = none
 # Ignore "Avoid nested ?: operators."
 # If the cases are simple and well-formatted, nesting can be preferable
 dotnet_diagnostic.RCS1238.severity = silent
+# Suggest "Fix documentation comment tag"
+# This rule assumes <c> with multi-line content should be <code> block.
+# Although this is sometimes true, other times <c> had to be wrapped.
+dotnet_diagnostic.RCS1247.severity = suggestion
 # Disable "Use implicit/explicit object creation"
 # Redundant with IDE0090
 dotnet_diagnostic.RCS1250.severity = none
