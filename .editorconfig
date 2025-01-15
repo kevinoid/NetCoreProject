@@ -212,6 +212,9 @@ dotnet_diagnostic.S1075.severity = suggestion
 # Disable "Remove the unused private method '{0}'."
 # Redundant with RCS1213, which doesn't gray+underline the entire method
 dotnet_diagnostic.S1144.severity = none
+# Disable "Remove unused local variable"
+# Redundant with IDE0059
+dotnet_diagnostic.S1481.severity = none
 # Disable "Redundant casts should not be used"
 # Doesn't consider nullability
 # https://github.com/SonarSource/sonar-dotnet/issues/3273
