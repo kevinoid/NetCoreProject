@@ -140,6 +140,9 @@ dotnet_diagnostic.RCS1090.severity = none
 # https://github.com/dotnet/csharplang/issues/106
 # https://github.com/dotnet/csharplang/issues/188
 dotnet_diagnostic.RCS1118.severity = suggestion
+# Disable "Add parentheses when necessary"
+# Redundant with SA1407 and SA1408
+dotnet_diagnostic.RCS1123.severity = none
 # Suggest "Inline local variable."
 # Often a local variable makes the code more easily readable/understandable.
 dotnet_diagnostic.RCS1124.severity = suggestion
