@@ -49,7 +49,7 @@
     <!-- Shared Metadata -->
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
     <Company>Kevin Locke</Company>
-    <Copyright>Copyright © 2019-2020 Kevin Locke</Copyright>
+    <Copyright>Copyright © 2019-2025 Kevin Locke</Copyright>
     <!-- PackageLicenseExpression uses SPDX Expression Syntax Version 2.0
       https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60
       https://spdx.org/licenses/ -->
