@@ -71,6 +71,9 @@ dotnet_diagnostic.CA1814.severity = suggestion
 # Disable "Prefer 'X' over 'Y' when span-based overloads are available"
 # TODO: Enable when dropping support for .NET Standard 2.0
 dotnet_diagnostic.CA1846.severity = none
+# Warn "Change type of [...]" to concrete types for internal/private members
+# Changing public/protected members would change API contract
+dotnet_code_quality.CA1859.api_surface = private, internal
 # Suggest "Dispose objects before losing scope"
 # Broken https://github.com/dotnet/roslyn-analyzers/issues/2949
 # https://github.com/dotnet/roslyn-analyzers/issues/2936
