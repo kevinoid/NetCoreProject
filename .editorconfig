@@ -240,6 +240,9 @@ dotnet_diagnostic.S2325.severity = none
 dotnet_diagnostic.S3236.severity = suggestion
 # Disable "Extract this nested ternary operation into an independent statement."
 dotnet_diagnostic.S3358.severity = none
+# Disable "Make this class name end with 'Exception'."
+# Redundant with CA1710
+dotnet_diagnostic.S3376.severity = none
 # Disable "Consider using 'throw;' to preserve the stack trace."
 # Redundant with CA2200
 dotnet_code_quality.S3445.severity = none
