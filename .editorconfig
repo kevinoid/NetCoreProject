@@ -238,6 +238,9 @@ dotnet_diagnostic.S1994.severity = suggestion
 # Disable "Methods and properties that don’t access instance data should be marked as static"
 # Redundant with CA1822
 dotnet_diagnostic.S2325.severity = none
+# Disable "Enumeration type names should not have "Flags" or "Enum" suffixes"
+# Redundant with CA1711
+dotnet_diagnostic.S2344.severity = none
 # Suggest "Remove this argument from the method call; it hides the caller information."
 # Warns about message passed to Debug.Assert(), which is often desirable.
 dotnet_diagnostic.S3236.severity = suggestion
