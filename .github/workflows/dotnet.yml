@@ -51,6 +51,8 @@ jobs:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
     - uses: actions/checkout@v5
+      with:
+        persist-credentials: false
     - name: Set up .NET ${{ matrix.dotnet }}
       uses: actions/setup-dotnet@v5
       with:
