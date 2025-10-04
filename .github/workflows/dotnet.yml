@@ -52,18 +52,18 @@ jobs:
       # https://github.com/dotnet/sdk/blob/v5.0.101-servicing.20601.7/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.DefaultItems.targets#L40
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
       with:
         persist-credentials: false
     - name: Set up .NET ${{ matrix.dotnet }}
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d  # v5.0.0
       with:
         dotnet-version: ${{ matrix.dotnet }}
     # Install framework versions to test
     # TODO: Install TargetFrameworks from .csproj.
     #       Step to run custom MSBuild target to output $(TargetFrameworks)?
     - name: Set up .NET Core 3.1
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d  # v5.0.0
       with:
         dotnet-version: '3.1'
     - name: Display .NET version
@@ -117,11 +117,11 @@ jobs:
     # Note: Codecov has poor support for matrix builds
     # https://github.com/codecov/codecov-action/issues/40
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7  # v5.5.1
       with:
         directory: NetCoreProject.UnitTests/TestResults
     - name: Upload coverage to Coveralls
-      uses: coverallsapp/github-action@v2
+      uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b  # v2.3.6
       # Ignore intermittent server errors (which are out of our control).
       # https://github.com/coverallsapp/github-action/issues/9
       # https://github.com/coverallsapp/github-action/issues/79
@@ -137,7 +137,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
-      uses: coverallsapp/github-action@v2
+      uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b  # v2.3.6
       with:
         github-token: ${{ secrets.github_token }}
         parallel-finished: true
