@@ -11,7 +11,7 @@
 
   <PropertyGroup Condition="'$(OutputType)'=='Exe'">
     <!-- Need a "concrete" framework (i.e. not netstandard) for Exe -->
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
 
     <!-- Configure class with Main method entry point -->
     <StartupObject>NetCoreProject.Program</StartupObject>

@@ -4,7 +4,7 @@
     <Description>Unit tests for NetCoreProject.</Description>
 
     <!-- Multi-target all frameworks to test, newest first (for VS runner) -->
-    <TargetFrameworks>net9.0</TargetFrameworks>
+    <TargetFrameworks>net10.0</TargetFrameworks>
     <!-- Test older frameworks in CI (to avoid requiring devs to install) -->
     <!--
       TODO: Test opportunistically outside of CI?
