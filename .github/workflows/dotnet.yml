@@ -75,6 +75,8 @@ jobs:
     # https://github.com/NuGet/Home/issues/12244 is fixed
     - name: Check for deprecated dependencies
       shell: bash
+      # Skip until https://github.com/dotnet/sdk/issues/51700 is fixed
+      if: false
       run: |
         deprecated=$(dotnet list package --deprecated)
         echo "$deprecated"
