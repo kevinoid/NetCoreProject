@@ -27,8 +27,8 @@ jobs:
         os:
         # Uncomment to test on macOS:
         # - macos-latest
-        # Use Ubuntu 22.04 until ICU and SSL issues with .NET 9 are resolved
-        # (.NET 9 requires libicu70+libssl1.1, 24.04 has libicu74+libssl3t64)
+        # Use Ubuntu 22.04 until ICU and SSL issues with .NET 10 are resolved
+        # (.NET 10 requires libicu70+libssl1.1, 24.04 has libicu74+libssl3t64)
         - ubuntu-22.04
         - windows-latest
         dotnet:
