@@ -53,7 +53,7 @@ jobs:
       # https://github.com/dotnet/sdk/blob/v5.0.101-servicing.20601.7/src/Tasks/Microsoft.NET.Build.Tasks/targets/Microsoft.NET.Sdk.DefaultItems.targets#L40
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
     steps:
-    - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd  # v5.0.1
+    - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3  # v6.0.0
       with:
         persist-credentials: false
     - name: Set up .NET ${{ matrix.dotnet }}
