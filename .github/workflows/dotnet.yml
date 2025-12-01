@@ -57,14 +57,14 @@ jobs:
       with:
         persist-credentials: false
     - name: Set up .NET ${{ matrix.dotnet }}
-      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d  # v5.0.0
+      uses: actions/setup-dotnet@2016bd2012dba4e32de620c46fe006a3ac9f0602  # v5.0.1
       with:
         dotnet-version: ${{ matrix.dotnet }}
     # Install framework versions to test
     # TODO: Install TargetFrameworks from .csproj.
     #       Step to run custom MSBuild target to output $(TargetFrameworks)?
     - name: Set up .NET Core 3.1
-      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d  # v5.0.0
+      uses: actions/setup-dotnet@2016bd2012dba4e32de620c46fe006a3ac9f0602  # v5.0.1
       with:
         dotnet-version: '3.1'
     - name: Display .NET version
