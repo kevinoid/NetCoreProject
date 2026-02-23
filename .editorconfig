@@ -129,6 +129,10 @@ dotnet_code_quality.RCS1044.severity = none
 # Conflicts with IDE0010 "Populate switch"
 # I'd prefer to be more explicit about cases.
 dotnet_diagnostic.RCS1069.severity = none
+# Disable "Remove redundant default switch section"
+# Conflicts with IDE0010 "Populate switch"
+# I'd prefer to be more explicit about cases.
+dotnet_diagnostic.RCS1070.severity = none
 # Disable "Use --/++ operator instead of assignment"
 # I find the more explicit assignment preferable most of the time.
 dotnet_diagnostic.RCS1089.severity = none
