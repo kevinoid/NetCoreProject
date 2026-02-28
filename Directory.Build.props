@@ -6,6 +6,7 @@
   <PropertyGroup>
     <!--
       Use the latest released version of the C# language.
+      https://learn.microsoft.com/en-us/dotnet/csharp/whats-new
       https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version
     -->
     <LangVersion>latest</LangVersion>
