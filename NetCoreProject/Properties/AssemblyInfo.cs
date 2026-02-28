@@ -9,3 +9,9 @@
 // Can be overridden on non-compliant types individually.
 // Note: Can't be set in csproj: https://github.com/dotnet/msbuild/issues/2281
 [assembly: System.CLSCompliant(true)]
+
+// Mark public types in this assembly as not visible to COM by default.
+// Override for types which should be visible to COM individually,
+// after considering the implications <https://stackoverflow.com/a/3309936>
+// Note: Can't be set in csproj: https://github.com/dotnet/msbuild/issues/2281
+[assembly: System.Runtime.InteropServices.ComVisible(false)]
