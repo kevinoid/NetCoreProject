@@ -50,6 +50,8 @@ dotnet_code_quality.api_surface = all
 
 # Warn "Mark assemblies with ComVisibleAttribute"
 dotnet_diagnostic.CA1017.severity = warning
+# Warn "Move P/Invokes to NativeMethods class"
+dotnet_diagnostic.CA1060.severity = warning
 # Limit "Validate arguments of public methods" to public methods
 # We may forego validation of calls we control for brevity or performance
 dotnet_code_quality.CA1062.api_surface = public
