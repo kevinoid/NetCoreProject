@@ -70,7 +70,7 @@
       https://developercommunity.visualstudio.com/content/problem/1222861
       https://github.com/dotnet/project-system/pull/6673 -->
     <AnalysisLevel>preview</AnalysisLevel>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <AnalysisMode>All</AnalysisMode>
 
     <!--
       By default, symbols are not generated in Release mode.  This complicates
