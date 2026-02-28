@@ -47,6 +47,12 @@ dotnet_code_quality.api_surface = all
 # Note: Compiler diagnostics (e.g. IDE*) are only analyzed during build with
 # VS2019 16.8 Preview4 or later and .NET5 RC2 SDK or later:
 # https://github.com/dotnet/roslyn/issues/33558#issuecomment-690347050
+#
+# Note: Explicitly configure warning for types not enabled by "All"
+# (CA1017, CA1045, CA1005, CA1014, CA1060, CA1021, and the code metrics
+# analyzer rules (CA1501, CA1502, CA1505, CA1506, and CA1509):
+# https://github.com/dotnet/docs/issues/38348#issuecomment-1820479194
+# https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#analysismode
 
 # Warn "Mark assemblies with ComVisibleAttribute"
 dotnet_diagnostic.CA1017.severity = warning
@@ -55,12 +61,18 @@ dotnet_diagnostic.CA1060.severity = warning
 # Limit "Validate arguments of public methods" to public methods
 # We may forego validation of calls we control for brevity or performance
 dotnet_code_quality.CA1062.api_surface = public
-# Suggest "Avoid excessive class coupling"
-# Broken https://github.com/dotnet/roslyn-analyzers/issues/2133
-dotnet_diagnostic.CA1506.severity = suggestion
-# Suggest "Avoid Dead Conditional Code"
-# Broken https://github.com/dotnet/roslyn-analyzers/issues/2180
-dotnet_diagnostic.CA1508.severity = suggestion
+# Warn "Avoid excessive inheritance"
+dotnet_diagnostic.CA1501.severity = warning
+# Warn "Avoid excessive complexity"
+dotnet_diagnostic.CA1502.severity = warning
+# Warn "Avoid unmaintainable code"
+dotnet_diagnostic.CA1505.severity = warning
+# Warn "Avoid excessive class coupling"
+dotnet_diagnostic.CA1506.severity = warning
+# Warn "Avoid Dead Conditional Code"
+dotnet_diagnostic.CA1508.severity = warning
+# Warn "Invalid entry in code metrics configuration file"
+dotnet_diagnostic.CA1509.severity = warning
 # Enable "Identifiers should differ by more than case" for public and internal
 # Having the private backing field for a property differ in case only is
 # common, satisfies capitalization conventions, and retains clarity.
