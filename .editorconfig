@@ -58,6 +58,10 @@ dotnet_code_quality.api_surface = all
 dotnet_diagnostic.CA1017.severity = warning
 # Warn "Move P/Invokes to NativeMethods class"
 dotnet_diagnostic.CA1060.severity = warning
+# Limit "Do not declare visible instance fields" to public and internal
+# Visible instance fields pose little risk for private classes, which
+# are often tightly coupled to their enclosing class.
+dotnet_code_quality.CA1051.api_surface = public, internal
 # Limit "Validate arguments of public methods" to public methods
 # We may forego validation of calls we control for brevity or performance
 dotnet_code_quality.CA1062.api_surface = public
