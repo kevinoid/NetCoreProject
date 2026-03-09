@@ -274,6 +274,9 @@ dotnet_diagnostic.S2344.severity = none
 # Suggest "Remove this argument from the method call; it hides the caller information."
 # Warns about message passed to Debug.Assert(), which is often desirable.
 dotnet_diagnostic.S3236.severity = suggestion
+# Disable "Private classes which are not derived in the current assembly should be marked as 'sealed'."
+# Redundant with CA1852
+dotnet_diagnostic.S3260.severity = none
 # Disable "Extract this nested ternary operation into an independent statement."
 dotnet_diagnostic.S3358.severity = none
 # Disable "Make this class name end with 'Exception'."
