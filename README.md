@@ -12,6 +12,7 @@ analysis](https://learn.microsoft.com/dotnet/fundamentals/code-analysis/overview
 [Roslynator](https://github.com/dotnet/roslynator),
 [Sonar](https://github.com/SonarSource/sonar-dotnet), and others),
 [xUnit](https://xunit.net/),
+[Microsoft.Testing.Platform](https://learn.microsoft.com/dotnet/core/testing/microsoft-testing-platform-intro),
 [GitHub Actions CI](https://docs.github.com/en/actions),
 [Coverlet](https://github.com/tonerdo/coverlet),
 and [codecov](https://codecov.io/)/[coveralls](https://coveralls.io/).
