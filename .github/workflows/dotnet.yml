@@ -86,6 +86,7 @@ jobs:
     # Note: Coveralls and Microsoft.Testing.Platform both support cobertura:
     # https://learn.microsoft.com/visualstudio/test/customizing-code-coverage-analysis#code-coverage-formats
     # https://github.com/coverallsapp/coverage-reporter#supported-coverage-report-formats
+    # https://docs.codecov.com/docs/supported-report-formats
     - name: Build and Test
       run: "dotnet test
         --no-restore
