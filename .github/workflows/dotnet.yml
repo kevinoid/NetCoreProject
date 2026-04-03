@@ -83,34 +83,24 @@ jobs:
         nodep_count=$(grep -c 'no deprecated packages' <<<"$deprecated")
         # Ensure "no deprecated packages" count matches project count
         test "$nodep_count" -eq 2
+    # Note: Coveralls and Microsoft.Testing.Platform both support cobertura:
+    # https://learn.microsoft.com/visualstudio/test/customizing-code-coverage-analysis#code-coverage-formats
+    # https://github.com/coverallsapp/coverage-reporter#supported-coverage-report-formats
     - name: Build and Test
       run: "dotnet test
         --no-restore
-        --settings TestCoverage.runsettings
+        --coverage
+        --coverage-output-format cobertura
         "
-    # Rename coverage.info to lcov.info for the coveralls uploader:
-    # https://github.com/coverallsapp/coverage-reporter/issues/36
-    #
-    # TODO: output TFM for each lcov for coveralls tag.  Complicated due
-    # to unavoidable GUID <https://github.com/microsoft/vstest/issues/2378>.
-    # - Could parse console output to match TFM from binary to attachment UUID.
-    #   Can't log to file <https://github.com/Microsoft/vstest/issues/680>
-    #   <https://github.com/microsoft/vstest/issues/2224>
-    # - When trx logger enabled, copy saved in dir with same name, overwritten
-    #   by each TFM since LogFilePrefix configuration doesn't apply to dir.
-    # - Could merge coverage files after VSTest using pwsh:
-    # https://github.com/coverlet-coverage/coverlet/pull/225#issuecomment-573896446
-    # - Different RunSettingsFilePath for each TargetFramework?
-    #   https://github.com/microsoft/vstest/pull/2272
-    # - Could force separate VSTest run for each TFM.
-    # Note: Unlike coverlet.msbuild, VSTest does not set output properties
-    # @(CoverletReport).  AfterTargets="VSTest" only useful for sequencing.
+    # Rename $GUID.cobertura.xml to cobertura.xml so uploaders can find it:
+    # https://github.com/getsentry/prevent-cli/blob/v11.2.8/codecov-cli/codecov_cli/services/upload/file_finder.py#L24
     - name: Rename coverage file(s)
       shell: bash
       run: |-
-        for lcov_path in *.UnitTests/TestResults/*/coverage.info; do
-            if [ -e "$lcov_path" ]; then
-                mv -nv "$lcov_path" "${lcov_path%/coverage.info}/lcov.info"
+        set -Ceu
+        for cobertura_path in *.UnitTests/bin/*/*/TestResults/*.cobertura.xml; do
+            if [ -e "$cobertura_path" ]; then
+                mv -nv "$cobertura_path" "${cobertura_path%/*}/cobertura.xml"
             fi
         done
     # Note: Codecov has poor support for matrix builds
@@ -118,7 +108,7 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2  # v6.0.0
       with:
-        directory: NetCoreProject.UnitTests/TestResults
+        directory: NetCoreProject.UnitTests/bin
     - name: Upload coverage to Coveralls
       uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e  # v2.3.7
       # Ignore intermittent server errors (which are out of our control).
