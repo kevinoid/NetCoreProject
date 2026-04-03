@@ -6,8 +6,11 @@
 [![.NET Version](https://img.shields.io/badge/.NET-netstandard2.0-informational.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
 [![Version on NuGet](https://img.shields.io/nuget/v/NetCoreProject.svg?style=flat)](https://www.nuget.org/packages/NetCoreProject)
 
-A .NET Core project template with
-[Roslyn Analyzers](https://github.com/dotnet/roslyn-analyzers/),
+A .NET Core project template with strict [code
+analysis](https://learn.microsoft.com/dotnet/fundamentals/code-analysis/overview)
+(with [StyleCop](https://github.com/DotNetAnalyzers/StyleCopAnalyzers),
+[Roslynator](https://github.com/dotnet/roslynator),
+[Sonar](https://github.com/SonarSource/sonar-dotnet), and others),
 [xUnit](https://xunit.net/),
 [GitHub Actions CI](https://docs.github.com/en/actions),
 [Coverlet](https://github.com/tonerdo/coverlet),
