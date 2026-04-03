@@ -79,6 +79,13 @@
       traces.  Instead, always generate debug symbols.
     -->
     <DebugSymbols>true</DebugSymbols>
+
+    <!--
+      Use the Microsoft Testing Platform command line experience for
+      consistency with other test frameworks and for the MTP extension system.
+      https://xunit.net/docs/getting-started/v3/microsoft-testing-platform#enabling-the-command-line-experience
+    -->
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
   </PropertyGroup>
 
   <!-- Treat warnings as errors in CI to enforce rules by failing the build. -->
