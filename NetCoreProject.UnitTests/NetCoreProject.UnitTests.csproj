@@ -11,8 +11,8 @@
       https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
       Newtonsoft.Json passes TestFrameworks from checks in build.ps1.  Painful.
     -->
-    <TargetFrameworks Condition="'$(CI)' == 'True'">$(TargetFrameworks);netcoreapp3.1</TargetFrameworks>
-    <TargetFrameworks Condition="'$(CI)' == 'True' and $([MSBuild]::IsOSPlatform('Windows'))">$(TargetFrameworks);net462</TargetFrameworks>
+    <TargetFrameworks Condition="'$(CI)' == 'True'">$(TargetFrameworks);net8.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(CI)' == 'True' and $([MSBuild]::IsOSPlatform('Windows'))">$(TargetFrameworks);net472</TargetFrameworks>
 
     <!--
       Disable check for EOL Target Framework (NETSDK1138).
