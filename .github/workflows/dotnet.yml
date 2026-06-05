@@ -33,12 +33,9 @@ jobs:
         - windows-latest
         dotnet:
         # Test using latest released SDK
-        # Note: Wildcard version resolves to latest LTS, not latest/STS
-        # https://github.com/actions/setup-dotnet/issues/497#issuecomment-2489645065
-        # - '*'
-        # Note: Must quote value to avoid 10.0 becoming 10, which silently fails.
-        - '10.0'
+        - latest
         # Uncomment to build using an earlier SDK version:
+        # Note: Must quote .0 versions to avoid failing silently.
         # - 3.1
     env:
       # Save NuGet packages in workspace for better performance on Windows.
