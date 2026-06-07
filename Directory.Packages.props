@@ -1,0 +1,25 @@
+<!--
+  NuGet Central Package Management (CPM)
+  https://learn.microsoft.com/nuget/consume-packages/Central-Package-Management
+
+  Declares package versions for all projects in this solution for consistency,
+  to reduce duplication, and so that transitive dependencies can be pinned
+  to resolve security issues without waiting for intermediates to update.
+-->
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="ErrorProne.NET.CoreAnalyzers" Version="0.1.2" />
+    <PackageVersion Include="ErrorProne.NET.Structs" Version="0.1.2" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.7.0" />
+    <PackageVersion Include="Roslynator.Analyzers" Version="4.15.0" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.27.0.140913" />
+    <PackageVersion Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" />
+    <PackageVersion Include="xunit.v3.mtp-v2" Version="3.2.2" />
+  </ItemGroup>
+</Project>

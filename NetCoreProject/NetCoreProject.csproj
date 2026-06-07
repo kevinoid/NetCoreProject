@@ -55,11 +55,11 @@
       Microsoft.CodeAnalysis.VersionCheckAnalyzer (NetAnalyzers dep only)
       Text.Analyzers (https://github.com/dotnet/roslyn-analyzers/issues/2200)
     -->
-    <PackageReference Include="ErrorProne.NET.CoreAnalyzers" Version="0.1.2">
+    <PackageReference Include="ErrorProne.NET.CoreAnalyzers">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ErrorProne.NET.Structs" Version="0.1.2">
+    <PackageReference Include="ErrorProne.NET.Structs">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -67,26 +67,26 @@
       Microsoft.CodeAnalysis.NetAnalyzers ships with .NET SDK 5.
       Reference it conditionally to support building with old SDKs.
     -->
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" Condition="!$([MSBuild]::VersionGreaterThanOrEquals($(NETCoreSdkVersion), '5.0.0'))">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Condition="!$([MSBuild]::VersionGreaterThanOrEquals($(NETCoreSdkVersion), '5.0.0'))">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0" Condition="'$(OutputType)'=='Library'">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Condition="'$(OutputType)'=='Library'">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <!-- TODO: Add Microsoft.EntityFrameworkCore.Analyzers for EF Core proj -->
-    <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+    <PackageReference Include="Roslynator.Analyzers">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.27.0.140913">
+    <PackageReference Include="SonarAnalyzer.CSharp">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <!-- Note: .Unstable is recommended by devs due to update frequency.  See:
          https://github.com/DotNetAnalyzers/StyleCopAnalyzers/issues/2585 -->
-    <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556">
+    <PackageReference Include="StyleCop.Analyzers.Unstable">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
