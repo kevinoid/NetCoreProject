@@ -150,6 +150,7 @@ dotnet_code_quality.RCS1044.severity = none
 # Suggest "Merge 'if' with nested 'if'"
 # It can be useful to separate if statements to indicate different conditions
 # being tested, or significance, or communicating other factors to developers.
+# Redundant with S1066
 dotnet_diagnostic.RCS1061.severity = suggestion
 # Disable "Remove unnecessary case label"
 # Conflicts with IDE0010 "Populate switch"
@@ -250,6 +251,11 @@ dotnet_diagnostic.S112.severity = none
 # Disable "Rename parameter 'X' to 'Y' to match the interface declaration."
 # Redundant with CA1725
 dotnet_diagnostic.S927.severity = none
+# Suggest "Merge this if statement with the enclosing one."
+# It can be useful to separate if statements to indicate different conditions
+# being tested, or significance, or communicating other factors to developers.
+# Redundant with RCS1061
+dotnet_diagnostic.S1066.severity = suggestion
 # Disable "URIs should not be hardcoded"
 # Too many false-positives (e.g. baseUrl + "/", XPaths, etc)
 dotnet_diagnostic.S1075.severity = suggestion
