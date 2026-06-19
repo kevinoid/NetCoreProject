@@ -245,6 +245,9 @@ dotnet_diagnostic.RCS1247.severity = suggestion
 # Disable "Use implicit/explicit object creation"
 # Redundant with IDE0090
 dotnet_diagnostic.RCS1250.severity = none
+# Disable "Remove empty statement"
+# Redundant with S1116 and SA1106
+dotnet_diagnostic.RCS1259.severity = none
 # Disable "'{0}' should not be thrown by user code."
 # Redundant with CA2201
 dotnet_diagnostic.S112.severity = none
@@ -262,6 +265,9 @@ dotnet_diagnostic.S1075.severity = suggestion
 # Disable "Remove the unused private method '{0}'."
 # Redundant with RCS1213, which doesn't gray+underline the entire method
 dotnet_diagnostic.S1144.severity = none
+# Disable "Remove this empty statement."
+# Redundant with RCS1259 and SA1106
+dotnet_diagnostic.S1116.severity = none
 # Disable "Remove this unused method parameter '{0}'."
 # Redundant with IDE0060
 dotnet_diagnostic.S1172.severity = none
