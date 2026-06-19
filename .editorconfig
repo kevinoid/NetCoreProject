@@ -147,6 +147,10 @@ dotnet_diagnostic.RCS1043.severity = suggestion
 # Disable "Remove original exception from throw statement"
 # Redundant with CA2200
 dotnet_code_quality.RCS1044.severity = none
+# Suggest "Merge 'if' with nested 'if'"
+# It can be useful to separate if statements to indicate different conditions
+# being tested, or significance, or communicating other factors to developers.
+dotnet_diagnostic.RCS1061.severity = suggestion
 # Disable "Remove unnecessary case label"
 # Conflicts with IDE0010 "Populate switch"
 # I'd prefer to be more explicit about cases.
