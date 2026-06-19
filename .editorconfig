@@ -274,6 +274,9 @@ dotnet_diagnostic.S1172.severity = none
 # Disable "Remove unused local variable"
 # Redundant with IDE0059
 dotnet_diagnostic.S1481.severity = none
+# Disable "Either remove this useless object instantiation of class 'X' or use it."
+# Redundant with CA1806
+dotnet_diagnostic.S1848.severity = none
 # Disable "Redundant casts should not be used"
 # Doesn't consider nullability
 # https://github.com/SonarSource/sonar-dotnet/issues/3273
