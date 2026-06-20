@@ -320,6 +320,11 @@ dotnet_diagnostic.S3971.severity = none
 # Disable "Remove this unused private field"
 # Redundant with IDE0052
 dotnet_diagnostic.S4487.severity = none
+# Disable "Refactor this 'ValueTask' usage to consume it only once."
+# Too many false positives:
+# https://community.sonarsource.com/t/139043
+# https://github.com/SonarSource/sonar-dotnet/issues/6779
+dotnet_diagnostic.S5034.severity = none
 # Disable "Use PascalCase for named placeholders"
 # Redundant with CA1727
 dotnet_diagnostic.S6678.severity = none
