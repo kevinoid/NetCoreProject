@@ -400,3 +400,8 @@ indent_style = space
 [*.{css,js,json,jsx,scss,ts,tsx,yaml,yml}]
 indent_size = 2
 indent_style = space
+
+[*.{csproj,props,sln,rdlc}]
+# Visual Studio does not add a final newline to these files.
+# Avoid adding it from text editors, which creates churn.
+insert_final_newline = false
