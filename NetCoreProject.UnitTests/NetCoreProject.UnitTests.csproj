@@ -24,6 +24,12 @@
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <!--
+      Exclude this project from publishing:
+      https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#ispublishable
+    -->
+    <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
