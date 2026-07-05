@@ -18,6 +18,13 @@
 
     <!-- Uncomment to embed a .ico file as the win32 icon resource -->
     <!-- <ApplicationIcon>NetCoreProject.ico<ApplicationIcon> -->
+
+    <!--
+      Trim self-contained publish and enable trim analysis build warnings
+      https://learn.microsoft.com/dotnet/core/deploying/trimming/trim-self-contained
+      https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-concepts
+    -->
+    <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
