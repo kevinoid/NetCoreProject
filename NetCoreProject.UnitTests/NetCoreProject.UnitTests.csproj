@@ -17,6 +17,12 @@
     <OutputType>Exe</OutputType>
 
     <!--
+      Build XML documentation.  To use and to check for errors:
+      https://learn.microsoft.com/dotnet/csharp/fundamentals/tutorials/xml-documentation
+    -->
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+    <!--
       Disable check for EOL Target Framework (NETSDK1138).
       Libraries may want to test against unsupported frameworks to accommodate
       users or simplify upgrade paths.  No need to warn or fail build.
@@ -34,14 +40,6 @@
       https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#ispublishable
     -->
     <IsPublishable>false</IsPublishable>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
