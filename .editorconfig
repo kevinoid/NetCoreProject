@@ -404,7 +404,8 @@ indent_style = space
 [*.{csproj,props,sln,rdlc}]
 # Visual Studio does not add a final newline to these files.
 # Avoid adding it from text editors, which creates churn.
-insert_final_newline = false
+# Leave the final newline as-is, since dotnet cli and other tools can add it.
+insert_final_newline = unset
 
 [*.diff]
 # Do not trim trailing whitespace from diffs (e.g. git patch edits)
