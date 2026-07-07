@@ -38,6 +38,7 @@ jobs:
       run: |
         tag_name=${GITHUB_REF#refs/tags/}
         tag_ver_num=${tag_name#v}
+        repo_name=${GITHUB_REPOSITORY##*/}
         for arch in x64 arm64; do
           for os in linux osx win; do
             dotnet publish \
@@ -45,7 +46,7 @@ jobs:
               --runtime "$os-$arch" \
               --self-contained true \
               -p:PublishSingleFile=true
-            publish_zip="${GITHUB_REPOSITORY#*/}-$tag_ver_num-$os-$arch.zip"
+            publish_zip="$repo_name-$tag_ver_num-$os-$arch.zip"
             zip -j -r "$publish_zip" */bin/Release/*/*/publish
             gh release upload "$GITHUB_REF" "$publish_zip"
           done
