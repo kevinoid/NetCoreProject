@@ -48,6 +48,6 @@ jobs:
               -p:PublishSingleFile=true
             publish_zip="$repo_name-$tag_ver_num-$os-$arch.zip"
             zip -j -r "$publish_zip" */bin/Release/*/*/publish
-            gh release upload "$GITHUB_REF" "$publish_zip"
+            gh release upload "$tag_name" "$publish_zip"
           done
         done
