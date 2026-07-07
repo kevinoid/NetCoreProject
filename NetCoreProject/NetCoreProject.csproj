@@ -75,14 +75,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <!--
-      Microsoft.CodeAnalysis.NetAnalyzers ships with .NET SDK 5.
-      Reference it conditionally to support building with old SDKs.
-    -->
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Condition="!$([MSBuild]::VersionGreaterThanOrEquals($(NETCoreSdkVersion), '5.0.0'))">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Condition="'$(OutputType)'=='Library'">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
