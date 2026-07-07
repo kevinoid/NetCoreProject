@@ -2,16 +2,15 @@
 // Copyright 2019-2026 Kevin Locke.  All rights reserved.
 // </copyright>
 
-namespace NetCoreProject.UnitTests
-{
-    using Xunit;
+namespace NetCoreProject.UnitTests;
 
-    public static class ProgramTests
+using Xunit;
+
+public static class ProgramTests
+{
+    [Fact]
+    public static void Returns0OnEmpty()
     {
-        [Fact]
-        public static void Returns0OnEmpty()
-        {
-            Assert.Equal(0, Program.Main([]));
-        }
+        Assert.Equal(0, Program.Main([]));
     }
 }

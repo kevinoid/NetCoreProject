@@ -2,13 +2,12 @@
 // Copyright 2019-2026 Kevin Locke.  All rights reserved.
 // </copyright>
 
-namespace NetCoreProject
+namespace NetCoreProject;
+
+public static class Program
 {
-    public static class Program
+    public static int Main(string[] args)
     {
-        public static int Main(string[] args)
-        {
-            return args?.Length > 0 ? 1 : 0;
-        }
+        return args?.Length > 0 ? 1 : 0;
     }
 }
