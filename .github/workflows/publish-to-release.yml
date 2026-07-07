@@ -29,8 +29,6 @@ jobs:
       uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1  # v5.4.0
       with:
         dotnet-version: latest
-    - name: Restore NuGet dependencies
-      run: dotnet restore
     - name: Build publish artifacts
       shell: bash
       env:
@@ -41,7 +39,6 @@ jobs:
         for arch in x64 arm64; do
           for os in linux osx win; do
             dotnet publish \
-              --no-restore \
               --configuration Release \
               --runtime "$os-$arch" \
               --self-contained true \
