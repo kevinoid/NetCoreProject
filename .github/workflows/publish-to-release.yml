@@ -33,9 +33,9 @@ jobs:
       shell: bash
       env:
         GH_TOKEN: ${{ github.token }}
+      # TODO: Publish in parallel:
+      # https://github.com/dotnet/sdk/issues/9363#issuecomment-387512008
       run: |
-        # TODO: Publish in parallel:
-        # https://github.com/dotnet/sdk/issues/9363#issuecomment-387512008
         for arch in x64 arm64; do
           for os in linux osx win; do
             dotnet publish \
