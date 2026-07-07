@@ -36,9 +36,6 @@ jobs:
       # TODO: Publish in parallel:
       # https://github.com/dotnet/sdk/issues/9363#issuecomment-387512008
       run: |
-        tag_name=${GITHUB_REF#refs/tags/}
-        tag_ver_num=${tag_name#v}
-        repo_name=${GITHUB_REPOSITORY##*/}
         for arch in x64 arm64; do
           for os in linux osx win; do
             dotnet publish \
@@ -46,8 +43,16 @@ jobs:
               --runtime "$os-$arch" \
               --self-contained true \
               -p:PublishSingleFile=true
-            publish_zip="$repo_name-$tag_ver_num-$os-$arch.zip"
-            zip -j -r "$publish_zip" */bin/Release/*/*/publish
-            gh release upload "$tag_name" "$publish_zip"
           done
         done
+
+        tag_name=${GITHUB_REF#refs/tags/}
+        tag_ver_num=${tag_name#v}
+        repo_name=${GITHUB_REPOSITORY##*/}
+        while IFS=/ read -r framework runtime; do
+          publish_zip="$repo_name-$tag_ver_num-$runtime-$framework.zip"
+          zip -j -r "$publish_zip" ./*/"bin/Release/$framework/$runtime/publish"
+          gh release upload "$tag_name" "$publish_zip"
+        done <<FRAMEWORK_RUNTIMES
+        $(printf '%s\n' */bin/Release/*/* | cut -d/ -f4- | sort -u)
+        FRAMEWORK_RUNTIMES
