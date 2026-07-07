@@ -1,0 +1,53 @@
+# GitHub Actions workflow to add publish artifacts to a GitHub release
+# https://docs.github.com/actions/reference/workflow-syntax-for-github-actions
+# https://docs.github.com/actions/guides/building-and-testing-python
+
+name: Publish to Release
+
+# Note: on key treated as boolean key by YAML
+# https://github.com/adrienverge/yamllint/issues/158#issuecomment-454313233
+# However, GitHub Actions documentation is consistent in using it unquoted.
+on:   # yamllint disable-line rule:truthy
+  # Publish to PyPI when a GitHub release is published
+  release:
+    types:
+    - published
+
+permissions: {}
+
+jobs:
+  publish_to_release:
+    name: Build publish artifacts, then add to GitHub release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+      with:
+        persist-credentials: false
+    - name: Set up .NET
+      uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1  # v5.4.0
+      with:
+        dotnet-version: latest
+    - name: Restore NuGet dependencies
+      run: dotnet restore
+    - name: Build publish artifacts
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        # TODO: Publish in parallel:
+        # https://github.com/dotnet/sdk/issues/9363#issuecomment-387512008
+        for arch in x64 arm64; do
+          for os in linux osx win; do
+            dotnet publish \
+              --no-restore \
+              --configuration Release \
+              --runtime "$os-$arch" \
+              --self-contained true \
+              -p:PublishSingleFile=true
+            publish_zip="${GITHUB_REPOSITORY#*/}-$GITHUB_REF-$os-$arch.zip"
+            zip -j -r "$publish_zip" */bin/Release/*/*/publish
+            gh release upload "$GITHUB_REF" "$publish_zip"
+          done
+        done
