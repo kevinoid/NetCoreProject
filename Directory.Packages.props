@@ -23,7 +23,7 @@
       https://github.com/microsoft/testfx/issues/9710#issuecomment-4907546178
       -->
     <PackageVersion Include="Microsoft.Testing.Extensions.Telemetry" Version="2.3.0" />
-    <PackageVersion Include="Roslynator.Analyzers" Version="4.16.0" />
+    <PackageVersion Include="Roslynator.Analyzers" Version="4.16.1" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.32.0.713" />
     <PackageVersion Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" />
     <PackageVersion Include="xunit.v3.mtp-v2" Version="3.2.2" />
