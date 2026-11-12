@@ -16,7 +16,23 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(OutputType)'=='Exe'">
-    <!-- Need a "concrete" framework (i.e. not netstandard) for Exe -->
+    <!--
+      Need a "concrete" framework (i.e. not netstandard) for Exe
+
+      If the framework is distributed with the binary, targeting the latest
+      version is usually preferable for latest features/fixes/improvements.
+
+      If the binary is run on other frameworks (e.g. system or other app),
+      targeting the earliest version may be preferable for compatibility.
+
+      Consider availability in GitHub Actions Runner Image:
+      https://github.com/v-dunjadenic/runner-images/blob/4055b52178bcc904dc9d059b0c01d247188aa967/images/ubuntu/toolsets/toolset-2604.json#L222-L227
+      (not necessary once setup/actions-dotnet step is run)
+
+      Consider availability in Dependabot NuGet updater image:
+      https://github.com/dependabot/dependabot-core/blob/e930d01210b9b9fbc59772914fbb070473feaaf2/nuget/Dockerfile#L47
+      (not necessary if sdk is defined in global.json)
+    -->
     <TargetFramework>net11.0</TargetFramework>
 
     <!-- Configure class with Main method entry point -->
